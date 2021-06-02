@@ -32,11 +32,26 @@ public class MinHeap {
         items[index2] = temp;
     }
 
+    private void ensureCapacity(){
+        if(size == capacity){
+            items = Arrays.copyOf(items, capacity * 2);
+            capacity*=2;
+        }
+    }
+
     public void add(int item) {
-        //insert item to items
+        ensureCapacity();
         items[size] = item;
         size++;
         heapfyUp();
+    }
+
+    public int poll(){
+        int item = items[0];
+        items[0] = items[size-1];
+        size--;
+        heapfyDown();
+        return item;
     }
 
     private void heapfyUp(){
@@ -44,6 +59,25 @@ public class MinHeap {
         while(hasParent(index) && getParent(index) > items[index]) {
             swap(getParentIndex(index), index);
             index = getParentIndex(index);
+        }
+    }
+
+    private void heapfyDown(){
+        int index = 0;
+        try{
+            while(hasLeftChild(index)){
+                int smallestChildIndex = getLeftChildIndex(index);
+                if (hasRightChild(index) && getRightChild(index) < getLeftChild(index)) {
+                    smallestChildIndex = getRightChildIndex(index);
+                }
+                if(items[index] < items[smallestChildIndex])
+                    break;
+                else
+                    swap(index, smallestChildIndex);
+                index = smallestChildIndex;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
