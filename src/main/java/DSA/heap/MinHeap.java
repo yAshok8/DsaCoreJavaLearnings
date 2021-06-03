@@ -23,8 +23,8 @@ public class MinHeap {
     public boolean hasParent(int childIndex) {return getParentIndex(childIndex) < size && getParentIndex(childIndex) >= 0; } //check this with root element
 
     public int getParent(int itemIndex) { return items[getParentIndex(itemIndex)]; };
-    public int getLeftChild(int itemIndex) { return items[getLeftChild(itemIndex)]; };
-    public int getRightChild(int itemIndex) { return items[getRightChild(itemIndex)]; };
+    public int getLeftChild(int itemIndex) { return items[getLeftChildIndex(itemIndex)]; };
+    public int getRightChild(int itemIndex) { return items[getRightChildIndex(itemIndex)]; };
 
     private void swap(int index1, int index2){
         int temp = items[index1];
@@ -54,6 +54,12 @@ public class MinHeap {
         return item;
     }
 
+    public int peek(){
+        if (size == 0)
+            throw new IllegalStateException("There are no items in heap");
+        return items[0];
+    }
+
     private void heapfyUp(){
         int index = size - 1;
         while(hasParent(index) && getParent(index) > items[index]) {
@@ -64,24 +70,21 @@ public class MinHeap {
 
     private void heapfyDown(){
         int index = 0;
-        try{
-            while(hasLeftChild(index)){
-                int smallestChildIndex = getLeftChildIndex(index);
-                if (hasRightChild(index) && getRightChild(index) < getLeftChild(index)) {
-                    smallestChildIndex = getRightChildIndex(index);
-                }
-                if(items[index] < items[smallestChildIndex])
-                    break;
-                else
-                    swap(index, smallestChildIndex);
-                index = smallestChildIndex;
+        while(hasLeftChild(index)){
+            int smallestChildIndex = getLeftChildIndex(index);
+            if (hasRightChild(index) && getRightChild(index) < getLeftChild(index)) {
+                smallestChildIndex = getRightChildIndex(index);
             }
-        }catch (Exception e){
-            e.printStackTrace();
+            if(items[index] < items[smallestChildIndex])
+                break;
+            else
+                swap(index, smallestChildIndex);
+            index = smallestChildIndex;
         }
     }
 
     public void printHeap() {
-        System.out.println(Arrays.toString(items));
+        for (int i = 0; i < size; i++)
+            System.out.print(items[i]+", ");
     }
 }
