@@ -12,9 +12,9 @@ public class LLNode {
         return this.next != null;
     }
 
-    public int printVal(){
+    public void printVal(){
         if(hasNext())
-            return this.next.printVal();
-        return this.value;
+            this.next.printVal();
+        System.out.print(this.value+" ");
     }
 }
