@@ -14,13 +14,23 @@ public class LinkedListSumImplementation {
         l2.next.next = new ListNode(8);
         l2.next.next.next = new ListNode(8);*/
 
+/*
+        ListNode l1 = new ListNode(9);
+        l1.next = new ListNode(9);
+        l1.next.next = new ListNode(1);
+
+        ListNode l2 = new ListNode(1);
+*/
+
         ListNode l1 = new ListNode(2);
         l1.next = new ListNode(4);
-        l1.next.next = new ListNode(3);
+        l1.next.next = new ListNode(9);
 
         ListNode l2 = new ListNode(5);
         l2.next = new ListNode(6);
         l2.next.next = new ListNode(4);
+        l2.next.next.next = new ListNode(9);
+
 
         ListNode res = new ListNode(0);
         ListNode resHead = res;
@@ -34,7 +44,7 @@ public class LinkedListSumImplementation {
 
             //take of the first digit and store as val of the res
             res.val = sumVal % 10;
-            if(l1.hasNext() || cf != 0)
+            if(cf != 0 || l1.next != null || l2.next != null)
                 res.next = new ListNode(0);
 
             res = res.next;
@@ -42,6 +52,29 @@ public class LinkedListSumImplementation {
             l2 = l2.next;
             //put the decimal digit in cf variable
         }
+
+        while ( l1 != null ){
+            int sumVal = l1.val + cf;
+            res.val = sumVal % 10;
+            cf = sumVal / 10;
+            if(l1.next != null || cf != 0) {
+                res.next = new ListNode(0);
+            }
+            res = res.next;
+            l1 = l1.next;
+        }
+
+        while ( l2 != null ){
+            int sumVal = l2.val + cf;
+            res.val = sumVal % 10;
+            cf = sumVal / 10;
+            if(l1.next != null || cf != 0) {
+                res.next = new ListNode(0);
+            }
+            res = res.next;
+            l2 = l2.next;
+        }
+
 
         if( cf != 0 )
             res.val = cf;
