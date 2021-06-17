@@ -68,7 +68,7 @@ public class LinkedListSumImplementation {
             int sumVal = l2.val + cf;
             res.val = sumVal % 10;
             cf = sumVal / 10;
-            if(l1.next != null || cf != 0) {
+            if(l2.next != null || cf != 0) {
                 res.next = new ListNode(0);
             }
             res = res.next;
