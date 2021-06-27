@@ -4,10 +4,10 @@ import DSA.linkedList.ListNode;
 
 public class LinkedListSumImplementation {
     public static void main(String[] args) {
-        LLNode list1 = new LLNode(9);
-        list1.next = new LLNode(9);
-        list1.next.next = new LLNode(9);
-        list1.next.next.next = new LLNode(9);
+        ListNode l1 = new ListNode(9);
+        l1.next = new ListNode(9);
+        l1.next.next = new ListNode(9);
+        l1.next.next.next = new ListNode(9);
 
         ListNode l2 = new ListNode(8);
         l2.next = new ListNode(8);
@@ -20,12 +20,12 @@ public class LinkedListSumImplementation {
         int cf = 0;
 
         while ( l1 != null && l2 != null ){
-            //add 2 values and cf (if any)
-            int sumVal = l1.value + l2.value + cf;
+            //add 2 vals and cf (if any)
+            int sumVal = l1.val + l2.val + cf;
             cf = sumVal / 10;
 
             //take of the first digit and store as val of the res
-            res.value = sumVal % 10;
+            res.val = sumVal % 10;
             if(l1.hasNext() || cf != 0)
                 res.next = new ListNode(0);
 
