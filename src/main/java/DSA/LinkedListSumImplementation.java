@@ -4,10 +4,10 @@ import DSA.linkedList.ListNode;
 
 public class LinkedListSumImplementation {
     public static void main(String[] args) {
-        ListNode l1 = new ListNode(9);
-        l1.next = new ListNode(9);
-        l1.next.next = new ListNode(9);
-        l1.next.next.next = new ListNode(9);
+        LLNode list1 = new LLNode(9);
+        list1.next = new LLNode(9);
+        list1.next.next = new LLNode(9);
+        list1.next.next.next = new LLNode(9);
 
         ListNode l2 = new ListNode(8);
         l2.next = new ListNode(8);
@@ -35,9 +35,35 @@ public class LinkedListSumImplementation {
             //put the decimal digit in cf variable
         }
 
-        if( cf != 0 )
-            res.value = cf;
+        while ( l1 != null ){
+            int sumVal = l1.val + cf;
+            res.val = sumVal % 10;
+            cf = sumVal / 10;
+            if(l1.next != null || cf != 0) {
+                res.next = new ListNode(0);
+            }
+            res = res.next;
+            l1 = l1.next;
+        }
 
+        while ( l2 != null ){
+            int sumVal = l2.val + cf;
+            res.val = sumVal % 10;
+            cf = sumVal / 10;
+            if(l2.next != null || cf != 0) {
+                res.next = new ListNode(0);
+            }
+            res = res.next;
+            l2 = l2.next;
+        }
+
+
+        if( cf != 0 )
+            res.val = cf;
+
+        System.out.print("[");
         resHead.printVal();
+        System.out.print("]");
     }
+
 }

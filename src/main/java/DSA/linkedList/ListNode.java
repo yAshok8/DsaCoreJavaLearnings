@@ -1,11 +1,11 @@
 package DSA.linkedList;
 
 public class ListNode {
-    public int value;
+    public int val;
     public ListNode next;
 
-    public ListNode(int value) {
-        this.value = value;
+    public ListNode(int val) {
+        this.val = val;
     }
 
     public boolean hasNext(){
@@ -13,8 +13,10 @@ public class ListNode {
     }
 
     public void printVal(){
-        if(hasNext())
+        System.out.print(this.val);
+        if(hasNext()){
+            System.out.print(",");
             this.next.printVal();
-        System.out.print(this.value+" ");
+        }
     }
 }
