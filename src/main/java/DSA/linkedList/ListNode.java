@@ -1,10 +1,10 @@
-package DSA.LinkedList;
+package DSA.linkedList;
 
-public class LLNode {
+public class ListNode {
     public int value;
-    public LLNode next;
+    public ListNode next;
 
-    public LLNode(int value) {
+    public ListNode(int value) {
         this.value = value;
     }
 
