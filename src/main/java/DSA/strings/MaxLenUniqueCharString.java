@@ -4,39 +4,28 @@ public class MaxLenUniqueCharString {
 
     public static void main(String[] args) {
 //        String str = "   | ()|";
-        String str = "dvdf";
+        String str = "dfdk";
 
         System.out.println(lengthOfLongestSubstring(str));
     }
 
     public static int lengthOfLongestSubstring(String str) {
         int[] charArr = new int[96];
-        StringBuffer maxUniqueChars = new StringBuffer();
-        int max_count = 0;
         int largest_len = 0;
-        for (int i=0; i<str.length(); i++){
-            int c = str.charAt(i);
+        int p1=0, p2=0;
+        int stringLen = str.length();
+        while(p2<stringLen){
+            int c = str.charAt(p2);
             if(charArr[c-32] == 1){
-                max_count = 1;
-                emptyCharArr(charArr, maxUniqueChars, c);
-                maxUniqueChars.setLength(0); //clears the string buffer
-                maxUniqueChars.append((char)c);
+                charArr[str.charAt(p1)-32] = 0;
+                p1++;
             }else{
                 charArr[c-32] = 1;
-                maxUniqueChars.append((char)c);
-                max_count++;
+                p2++;
             }
-            largest_len = Math.max(largest_len, max_count);
+            largest_len = Math.max((p2-p1), largest_len);
         }
         return largest_len;
     }
-
-    private static void emptyCharArr(int[] charArr, StringBuffer maxUniqueChars, int c) {
-        for(int i=0; i<maxUniqueChars.length(); i++){
-            charArr[maxUniqueChars.charAt(i)-32] = 0;
-        }
-        charArr[c-32] = 1;
-    }
-
 
 }
