@@ -2,7 +2,7 @@ package DSA.strings;
 
 public class LongestPalindromicSubstringOptimized {
     public static void main(String[] args) {
-        String s = "dfdk";
+        String s = "dfdkdf";
         System.out.println(longestPalindromicSubstring(s));
    }
     private static String longestPalindromicSubstring(String s){
@@ -12,7 +12,8 @@ public class LongestPalindromicSubstringOptimized {
         int [][] dynamicPalindromeMap = new int [size][size];
         int maxLen = 0;
         int tempMax = 0;
-        String longestString = "";
+        String longestString = null;
+        //Note: This is not simple 2d array traversal. We are traversing it in zigzag fashion
         for(int i=0; i<=size-1; i++){
             int innerI = i;
             for(int j=0; j<=size-1-i; j++){
