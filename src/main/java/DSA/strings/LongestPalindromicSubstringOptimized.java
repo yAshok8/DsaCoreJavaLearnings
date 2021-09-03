@@ -25,6 +25,7 @@ public class LongestPalindromicSubstringOptimized {
                     if(i==1){
                         dynamicPalindromeMap[j][right] = edgeCharsSame ? 1 : 0;
                     }else{
+                        //Check first the corners are same and then inner string is palindrome referring the matrix
                         dynamicPalindromeMap[j][right] = (edgeCharsSame && dynamicPalindromeMap[j+1][right-1] == 1 ) ? 1 : 0;
                     }
                 }
