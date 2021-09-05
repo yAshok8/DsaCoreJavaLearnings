@@ -1,14 +1,83 @@
 package rough_work;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
 public class RoughWork {
+
+
     public static void main(String[] args) {
-//        System.out.println(Integer.toBinaryString(Integer.MAX_VALUE));
-//        System.out.println(Integer.toBinaryString(Integer.MIN_VALUE));
-//        System.out.println(Integer.toBinaryString(15));
-//        System.out.println(Integer.toBinaryString(-15));
-//        System.out.println(areOccurrencesEqual("abc"));
-        String [] strs = {"a", "asolhi", "astol", "ak"};
-        System.out.print("Prefix String is " + longestCommonPrefix(strs));
+//        String [] strs = {"a", "asolhi", "astol", "ak"};
+//        System.out.print("Prefix String is " + longestCommonPrefix(strs));
+        System.out.println(isValidParanthesisOptimized("[([])]")); //true
+        System.out.println(isValidParanthesisOptimized("[([])")); //false
+        System.out.println(isValidParanthesisOptimized(")]")); //false
+        System.out.println(isValidParanthesisOptimized("[([]")); //false
+        System.out.println(isValidParanthesisOptimized("")); //false
+    }
+
+    public static boolean isValidParanthesisOptimized(String s){
+        if(s.length() == 0 ||
+                s.length() % 2 != 0 ||
+                s.charAt(0) == ']' ||
+                s.charAt(0) == ')' ||
+                s.charAt(0) == '}'){
+            return false;
+        }
+        Stack<Character> st = new Stack<>();
+        int index = 0;
+        while (index < s.length()){
+            char indexChar = s.charAt(index);
+            if (indexChar == '[' || indexChar == '(' || indexChar == '{'){
+                st.push(indexChar);
+            }else{
+                if(indexChar == '}'){
+                    if(st.isEmpty() || st.pop() != '{')
+                        return false;
+                }else if(indexChar == ']'){
+                    if(st.isEmpty() || st.pop() != '[')
+                        return false;
+                }else {
+                    if(st.isEmpty() || st.pop() != '(')
+                        return false;
+                }
+            }
+            index++;
+        }
+        return st.isEmpty();
+    }
+
+    public static boolean isValidParenthesis(String s){
+        Map<Character, Character> inverse = new HashMap<>();
+        inverse.put('}', '{');
+        inverse.put(']', '[');
+        inverse.put(')', '(');
+        Map<Character, Integer> bracketFrequency = new HashMap<>();
+        bracketFrequency.put('[', 0);
+        bracketFrequency.put('{', 0);
+        bracketFrequency.put('(', 0);
+        Stack<Character> currentTopBracket = new Stack<>();
+        for(int i=0; i<s.length(); i++){
+            char bracket = s.charAt(i);
+            if(bracket == ']' || bracket == ')' || bracket == '}' ){
+                if(currentTopBracket.size() == 0)
+                    return false;
+                if(currentTopBracket.peek() != inverse.get(bracket))
+                    return false;
+                int bracF = bracketFrequency.get(inverse.get(bracket));
+                currentTopBracket.pop();
+                bracketFrequency.put(inverse.get(bracket), bracF-1);
+            }else{
+                bracketFrequency.put(bracket,bracketFrequency.get(bracket)+1);
+                currentTopBracket.push(bracket);
+            }
+        }
+        for(Map.Entry<Character, Integer> entry : bracketFrequency.entrySet()){
+            if(entry.getValue() != 0)
+                return false;
+        }
+        return true;
     }
 
     public static String longestCommonPrefix(String[] strs) {
