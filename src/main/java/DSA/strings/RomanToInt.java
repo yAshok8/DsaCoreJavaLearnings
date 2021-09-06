@@ -51,12 +51,6 @@ public class RomanToInt {
                 default:
                     int_num = int_num + roman_to_int.get(c);
             }
-
-/*            if(c=='I'){
-            }else if(c=='X'){
-            }else if(c=='C'){
-            }else{
-            }*/
             index++;
         }
         return int_num;
