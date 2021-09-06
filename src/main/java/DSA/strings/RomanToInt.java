@@ -32,17 +32,17 @@ public class RomanToInt {
                         int_num = int_num + roman_to_int.get(c);
                     }
                     break;
-                case 'C' :
-                    if(index!=str_len-1 && (s.charAt(index+1)=='D' || s.charAt(index+1)=='M')){
-                        int_num = int_num + (roman_to_int.get(s.charAt(index+1)) - 100);
+                case 'X' :
+                    if(index!=str_len-1 && (s.charAt(index+1)=='L' || s.charAt(index+1)=='C')){
+                        int_num = int_num + (roman_to_int.get(s.charAt(index+1)) - 10);
                         index++;
                     }else{
                         int_num = int_num + roman_to_int.get(c);
                     }
                     break;
-                case 'X' :
-                    if(index!=str_len-1 && (s.charAt(index+1)=='L' || s.charAt(index+1)=='C')){
-                        int_num = int_num + (roman_to_int.get(s.charAt(index+1)) - 10);
+                case 'C' :
+                    if(index!=str_len-1 && (s.charAt(index+1)=='D' || s.charAt(index+1)=='M')){
+                        int_num = int_num + (roman_to_int.get(s.charAt(index+1)) - 100);
                         index++;
                     }else{
                         int_num = int_num + roman_to_int.get(c);
