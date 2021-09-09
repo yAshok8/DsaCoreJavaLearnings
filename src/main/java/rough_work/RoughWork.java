@@ -10,11 +10,9 @@ public class RoughWork {
     public static void main(String[] args) {
 //        String [] strs = {"a", "asolhi", "astol", "ak"};
 //        System.out.print("Prefix String is " + longestCommonPrefix(strs));
-        System.out.println(isValidParanthesisOptimized("[([])]")); //true
-        System.out.println(isValidParanthesisOptimized("[([])")); //false
-        System.out.println(isValidParanthesisOptimized(")]")); //false
-        System.out.println(isValidParanthesisOptimized("[([]")); //false
-        System.out.println(isValidParanthesisOptimized("")); //false
+        int num1 = (~0<<5);
+        int num2 = ((1<<2) - 1);
+        System.out.println(Integer.toBinaryString(num1 | num2));
     }
 
     public static boolean isValidParanthesisOptimized(String s){
