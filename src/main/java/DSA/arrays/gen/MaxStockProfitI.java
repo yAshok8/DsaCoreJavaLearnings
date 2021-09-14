@@ -1,6 +1,6 @@
 package DSA.arrays.gen;
 
-class MaxStockProfit {
+class MaxStockProfitI {
     public static void main(String[] args) {
         int [] prices = {7,1,6,9,1,3,8};
 //        int [] prices = {7,1,5,3,6,4};
