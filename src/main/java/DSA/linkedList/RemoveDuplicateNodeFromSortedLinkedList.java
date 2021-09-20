@@ -2,13 +2,7 @@ package DSA.linkedList;
 
 public class RemoveDuplicateNodeFromSortedLinkedList {
     public static void main(String[] args) {
-        ListNode l1 = new ListNode(1);
-        l1.next = new ListNode(1);
-        l1.next.next = new ListNode(2);
-        l1.next.next.next = new ListNode(3);
-        l1.next.next.next.next = new ListNode(3);
-//        l1.next.next.next.next.next = new ListNode(3);
-//        l1.next.next.next.next.next.next = new ListNode(4);
+        ListNode l1 = LinkedListOperations.getDummyList();
         System.out.println("\nbefore removing duplicates");
         l1.printVal();
         deleteDuplicates(l1); //this is pass by reference
