@@ -11,7 +11,7 @@ public class SwapAdjescentNodes {
     }
 
     private static ListNode swapAdjescent(ListNode firstNode, ListNode secondNode){
-        if(firstNode == null || secondNode == null)
+        if(secondNode == null)
             return firstNode;
 
         firstNode.next = secondNode.next;
