@@ -5,14 +5,23 @@ public class SwapAdjescentNodes {
     public static void main(String[] args) {
         ListNode ll = LinkedListOperations.getDummyList();
         ListNode dh = new ListNode(0);
-        ListNode f = ll;
-        dh.next = f;
-        dh.next.printVal();
-        ListNode s = ll.next;
-        f.next = s.next;
-        s.next = f;
-        f = s;
+        ll.printVal();
         System.out.println();
-        f.printVal();
+        swapAdjescent(ll, ll.next).printVal();
+    }
+
+    private static ListNode swapAdjescent(ListNode firstNode, ListNode secondNode){
+        if(firstNode == null || secondNode == null)
+            return firstNode;
+
+        firstNode.next = secondNode.next;
+        secondNode.next = firstNode;
+        firstNode = secondNode;
+        secondNode = secondNode.next;
+
+        if (secondNode.next != null)
+            secondNode.next = swapAdjescent(secondNode.next, secondNode.next.next);
+
+        return firstNode;
     }
 }
