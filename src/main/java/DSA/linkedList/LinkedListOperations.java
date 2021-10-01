@@ -11,6 +11,18 @@ package DSA.linkedList;
  * }
  */
 class LinkedListOperations {
+    /*make a method in which you provide the size*/
+    public static ListNode getDummyList(){
+        ListNode l1 = new ListNode(1);
+        l1.next = new ListNode(2);
+        l1.next.next = new ListNode(3);
+        l1.next.next.next = new ListNode(4);
+        l1.next.next.next.next = new ListNode(5);
+        l1.next.next.next.next.next = new ListNode(6);
+        l1.next.next.next.next.next.next = new ListNode(7);
+        return l1;
+    }
+
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if(l1 == null)
             return l2;
