@@ -3,9 +3,7 @@ package DSA.strings;
 class AddBinaryStrings {
 
     public static void main(String[] args) {
-        //        String a = "1010";
-        //        String b = "1011";
-        String a = "100";
+        String a = "10011";
         String b = "110010";
         System.out.println(addBinaryBF(a, b));
         System.out.println(addBinaryCleanOptimized(a, b));
