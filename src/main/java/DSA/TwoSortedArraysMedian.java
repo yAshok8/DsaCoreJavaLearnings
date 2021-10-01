@@ -2,10 +2,7 @@ package DSA;
 
 public class TwoSortedArraysMedian {
     public static void main(String[] args) {
-//        int [] x = {3,5,13,18,21,23};
-//        int [] y = {8,9,15,19,35,40};
-
-        int [] x = {1};
+        int [] x = {1, 2};
         int [] y = {1};
         double median = findMedian(x,y);
         System.out.println("\n Median: "+median);
