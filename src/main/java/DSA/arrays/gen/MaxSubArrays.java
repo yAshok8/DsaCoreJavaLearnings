@@ -5,10 +5,21 @@ class MaxSubArrays {
     public static void main(String[] args) {
 //        int [] nums = {1,-1,-2};
 //        int [] nums = {5,4,-1,7,8};
-//        int [] nums = {-2,1,-3,4,-1,2,1,-5,4};
-        int [] nums = {10,0,1,-20,2,-1,10};
+        int [] nums = {-2,1,-3,4,-1,2,1,-5,4};
+//        int [] nums = {10,0,1,-20,2,-1,10};
 //        System.out.println(maxSubArray(nums));
-        System.out.println(maxSubArrayKadensApproach(nums));
+//        System.out.println(maxSubArrayKadensApproach(nums));
+        System.out.println(maxSubArrayKadensApproachShortened(nums));
+    }
+
+    public static int maxSubArrayKadensApproachShortened(int[] nums) {
+        int currMax = nums[0];
+        int maxSum = nums[0];
+        for (int i=1; i<nums.length;i++){
+            currMax = Math.max(nums[i], nums[i]+currMax);
+            maxSum = Math.max(currMax, maxSum);
+        }
+        return maxSum;
     }
 
     public static int maxSubArrayKadensApproach(int[] nums) {
