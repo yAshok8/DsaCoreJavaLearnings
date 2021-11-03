@@ -1,4 +1,4 @@
-package DSA.arrays.two_pointers;
+package DSA.arrays.hashtable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
