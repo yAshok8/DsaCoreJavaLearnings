@@ -50,7 +50,7 @@ public class StreamsExamples {
     private static void findDistinctNumbersFromArray(){
         int [] dupElemArray = {1,1,2,2,2,1,4,2,4,5,1,4,6,7,2,2,2,4,6,7,9};
         System.out.println("Original Array : "+ Arrays.toString(dupElemArray));
-        System.out.println("Distinct Elements of the Array : "+ Arrays.stream(dupElemArray).distinct());
+        System.out.println("Distinct Elements of the Array : "+ Arrays.toString(Arrays.stream(dupElemArray).distinct().toArray()));
     }
 
     private static int findFirstElementOfNumArray(){
