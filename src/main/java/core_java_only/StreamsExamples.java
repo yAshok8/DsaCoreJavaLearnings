@@ -16,6 +16,7 @@ public class StreamsExamples {
         System.out.println("findFirstElementOfNumArray() => "+findFirstElementOfNumArray());
         System.out.println("findMaxIntNum() => "+findMaxIntNum());
         System.out.println("findMinIntNum()  => "+findMinIntNum());
+        System.out.println("countNumsInArr()  => "+countNumsInArr());
         System.out.println("Calling sortingArrayWithStreams()");
         sortingArrayWithStreams();
         System.out.println("Calling findDistinctNumbersFromArray() ");
@@ -59,7 +60,7 @@ public class StreamsExamples {
     }
 
     private static void forEachDemo(){
-        int [] elements = IntStream.range(0,10).toArray();
+        int [] elements = IntStream.range(0,5).toArray();
         Arrays.stream(elements).forEach(System.out::println);
     }
 
