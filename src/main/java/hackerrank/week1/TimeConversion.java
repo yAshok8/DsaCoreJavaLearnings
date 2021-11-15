@@ -20,14 +20,12 @@ class TimeConversionResult {
         int strlen = s.length();
         String period = s.substring(strlen-2, strlen);
         int hour = Integer.parseInt(s.substring(0,2));
-        int finalHour = 0;
         String finalTime = null;
+        String midVal = s.substring(2, strlen-2);
         if ("AM".equalsIgnoreCase(period)){
-            finalHour = hour % 12;
-            finalTime =  "0" + finalHour + "" + s.substring(2, strlen-2);
+            finalTime =  "0" + ( hour % 12 ) + "" + midVal;
         }else{
-            finalHour = 12 + ( hour % 12 );
-            finalTime = finalHour + "" + s.substring(2,strlen-2);
+            finalTime = 12 + ( hour % 12 ) + "" + midVal;
         }
         return finalTime;
     }
