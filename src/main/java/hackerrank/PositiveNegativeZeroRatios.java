@@ -12,6 +12,16 @@ import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
+/*
+Input Below:
+9
+1 2 -1 -2 -4 -6 -3 0 0
+Output Below:
+0.222222
+0.555556
+0.222222
+* */
+
 class Result {
 
     /*
