@@ -16,7 +16,7 @@ Output Below:
 0.222222
 **/
 
-class Result {
+class PositiveNegativeZeroRatiosResult {
 
     /*
      * Complete the 'plusMinus' function below.
@@ -61,7 +61,7 @@ public class PositiveNegativeZeroRatios {
             .map(Integer::parseInt)
             .collect(toList());
 
-        Result.plusMinus(arr);
+        PositiveNegativeZeroRatiosResult.plusMinus(arr);
 
         bufferedReader.close();
     }
