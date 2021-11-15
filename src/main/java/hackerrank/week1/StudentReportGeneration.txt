@@ -1,0 +1,39 @@
+Hackerrank URL: https://www.hackerrank.com/challenges/the-report/problem
+
+CREATE TABLE students (
+  id INT AUTO_INCREMENT  PRIMARY KEY,
+  name VARCHAR(250) NOT NULL,
+  marks INT
+);
+
+CREATE TABLE grades (
+	grade int,
+	min_mark int,
+	max_mark int
+);
+
+Insert into students (name, marks) values ('Julia', 88);
+Insert into students (name, marks) values ('Samantha', 68);
+Insert into students (name, marks) values ('Maria', 99);
+Insert into students (name, marks) values ('Scarlet', 78);
+Insert into students (name, marks) values ('Ashley', 63);
+Insert into students (name, marks) values ('Jane', 81);
+
+Insert into grades (grade, min_mark, max_mark) values (1, 0, 9);
+Insert into grades (grade, min_mark, max_mark) values (2, 10, 19);
+Insert into grades (grade, min_mark, max_mark) values (3, 20, 29);
+Insert into grades (grade, min_mark, max_mark) values (4, 30, 39);
+Insert into grades (grade, min_mark, max_mark) values (5, 40, 49);
+Insert into grades (grade, min_mark, max_mark) values (6, 50, 59);
+Insert into grades (grade, min_mark, max_mark) values (7, 60, 69);
+Insert into grades (grade, min_mark, max_mark) values (8, 70, 79);
+Insert into grades (grade, min_mark, max_mark) values (9, 80, 89);
+Insert into grades (grade, min_mark, max_mark) values (10, 90, 99);
+
+Solution Query:
+
+Select if(g.grade < 8, "NULL", s.name), g.grade, s.marks
+from Students s
+join Grades g
+on s.marks >= g.min_mark and s.marks <= g.max_mark
+order by g.grade desc, name
