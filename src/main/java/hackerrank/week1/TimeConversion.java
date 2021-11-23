@@ -14,14 +14,13 @@ class TimeConversionResult {
  * Output 2 : "00:01:00"
  */
 
-    //07:05:45PM
     public static String timeConversion(String s) {
         //fetch first and last 2 chars as string
         int strlen = s.length();
         String period = s.substring(strlen-2, strlen);
         int hour = Integer.parseInt(s.substring(0,2));
         String finalTime = null;
-        String midVal = s.substring(2, strlen-2);
+        String midVal = s.substring(2, strlen-2); //mid value remains the same for both the formats
         if ("AM".equalsIgnoreCase(period)){
             finalTime =  "0" + ( hour % 12 ) + "" + midVal;
         }else{
