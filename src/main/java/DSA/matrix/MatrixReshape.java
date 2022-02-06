@@ -28,19 +28,19 @@ LeetCode URL: https://leetcode.com/problems/reshape-the-matrix/
 public class MatrixReshape {
     public static void main(String[] args) {
         int [][] srcMat = {{1,2}, {3,4}, {5,6}};
-        int [][] resMat = matrixReshape(srcMat, 1, 6);
+        int [][] resMat = matrixReshape(srcMat, 2, 3);
 //        int [][] resMat = matrixReshape(srcMat, srcMat.length, srcMat[0].length);
         System.out.println("Source Matrix: ");
-        for (int i=0; i<srcMat.length; i++) {
+        for (int[] value : srcMat) {
             for (int j = 0; j < srcMat[0].length; j++) {
-                System.out.print(srcMat[i][j]+" ");
+                System.out.print(value[j] + " ");
             }
             System.out.println();
         }
         System.out.println("Result Matrix: ");
-        for (int i=0; i<resMat.length; i++) {
+        for (int[] ints : resMat) {
             for (int j = 0; j < resMat[0].length; j++) {
-                System.out.print(resMat[i][j]+" ");
+                System.out.print(ints[j] + " ");
             }
             System.out.println();
         }
