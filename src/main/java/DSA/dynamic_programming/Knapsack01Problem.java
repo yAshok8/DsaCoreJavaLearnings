@@ -12,9 +12,9 @@ public class Knapsack01Problem {
         if (W == 0 || index == 0)
             return price;
 
-        if (wt[index] < W) {
-            return Math.max(KS(wt, val, price, W-wt[index], index - 1),
-                    KS(wt, val, price + val[index], W, index - 1));
+        if (wt[index] <= W) {
+            return Math.max(KS(wt, val, price + val[index], W-wt[index], index - 1),
+                    KS(wt, val, price, W, index - 1));
         }
 
         return KS(wt, val, price, W, index - 1);
