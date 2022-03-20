@@ -1,3 +1,5 @@
+package DSA.hashtable;
+
 class RingsAndRods {
 
     public static void main(String[] args) {

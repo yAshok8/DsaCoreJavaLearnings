@@ -64,9 +64,10 @@ public class FourSum {
     public static void main(String[] args) {
 
         FourSum fourSum = new FourSum();
-        int [] arr = {-3,-2,-1,0,0,1,2,3};
+//        int [] arr = {-3,-2,-1,0,0,1,2,3};
+        int [] arr = {4,12,-34,21,22,-28,16,-16,0,-17,9,-5,-12,9,18,-5,-1,0,-13};
 //        int [] arr = {1,0,-1,0,-2,2};
-        List<List<Integer>> result = fourSum.fourSum(arr, 0);
+        List<List<Integer>> result = fourSum.fourSum(arr, 7);
 
         System.out.println(result);
 
