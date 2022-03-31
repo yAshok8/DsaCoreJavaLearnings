@@ -1,7 +1,8 @@
 package rough_work;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
 
 public class RoughWork {
 
