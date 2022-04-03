@@ -8,3 +8,9 @@ class TreeDemo {
 		node.addNode(12);
 	}
 }
+
+/*
+*
+* 5,2,6,1
+*
+* */
