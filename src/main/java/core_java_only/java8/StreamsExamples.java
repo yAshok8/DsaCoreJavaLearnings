@@ -1,4 +1,4 @@
-package core_java_only;
+package core_java_only.java8;
 
 import java.util.Arrays;
 import java.util.List;
