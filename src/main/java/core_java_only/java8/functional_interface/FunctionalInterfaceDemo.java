@@ -1,10 +1,17 @@
-package core_java_only;
+package core_java_only.java8.functional_interface;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
+
+/**
+ * Predicate: Takes an argument object and returns a boolean.
+ * Function: Takes an object and returns an object.
+ * Consumer: Takes an object and does not return anything.
+ * Supplier: Does not take anything but returns an object.
+ * */
 
 public class FunctionalInterfaceDemo {
     public static void main(String[] args) {
