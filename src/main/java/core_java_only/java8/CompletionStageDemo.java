@@ -4,7 +4,6 @@ import java.util.concurrent.CompletableFuture;
 
 public class CompletionStageDemo {
     public static void main(String[] args) {
-        System.out.println("coming here");
         CompletableFuture.supplyAsync(CompletionStageDemo::getOrder)
                 .thenApply(CompletionStageDemo::processOrder)
                 .thenApply(CompletionStageDemo::processPayment)
