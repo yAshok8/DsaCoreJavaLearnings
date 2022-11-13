@@ -7,7 +7,7 @@ import java.util.*;
 class SplitIntoSubArray {
 	public static void main(String[] args) {
 		int[] original = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};//, 10};
-		int splitSize = 6;
+		int splitSize = 4;
 		List<int[]> list = splitArray(original, splitSize);
 		list.forEach(splitArray -> System.out.println(Arrays.toString(splitArray)));
 	}
@@ -28,9 +28,7 @@ class SplitIntoSubArray {
 			}
 			temp[s++] = array[i];
 		}
-		if (null != temp) {
-			result.add(temp);
-		}
+		result.add(temp);
 		return result;
 	}
 }
