@@ -25,5 +25,12 @@ public class GroupingByDemo {
         for (Map.Entry<String, List<Student>> student: nameGroup.entrySet()) {
             System.out.println(student);
         }
+
+        //to create a map of id with student name
+        Map<Integer, String> id_name = studentList
+                .stream()
+                .collect(Collectors.toMap(Student::getId, Student::getName));
+
+        System.out.println(id_name);
     }
 }
