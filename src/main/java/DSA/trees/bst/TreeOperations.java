@@ -13,6 +13,6 @@ class TreeOperations {
     private static int calcHeight(TreeNode node) {
         if (node == null) 
             return 0;
-        return Math.max(calcHeight(node.left), calcHeight(node.right));
+        return 1 + Math.max(calcHeight(node.left), calcHeight(node.right));
     }
 }
