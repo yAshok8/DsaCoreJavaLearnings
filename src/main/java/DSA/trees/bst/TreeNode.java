@@ -1,18 +1,22 @@
 package DSA.trees.bst;
 
-class TNode {
+class TreeNode {
 	
 	public int val;
-	public TNode left;
-	public TNode right;
-	
+	public TreeNode left;
+	public TreeNode right;
+	public TreeNode() {}
+	public TreeNode(int val) {
+		this.val = val;
+	}
+
 	public void addNode(int nodeVal) {
 		addNode(this, nodeVal);
 	}
 	
-	public TNode addNode(TNode root, int nodeVal) {
+	public TreeNode addNode(TreeNode root, int nodeVal) {
 		if (root == null) {
-			TNode node = new TNode();
+			TreeNode node = new TreeNode();
 			node.val = nodeVal;
 			return node;
 		}
