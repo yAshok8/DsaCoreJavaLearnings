@@ -9,7 +9,7 @@ public class TreeProblems {
         root.left.right = new TreeNode(3);
         root.left.left.left = new TreeNode(4);
         root.left.left.right = new TreeNode(4);
-        System.out.println(TreeOperations.isBalanced(root));
+        System.out.println(TreeOperations.isBalancedSquareNComplexity(root));
     }
 
 }
