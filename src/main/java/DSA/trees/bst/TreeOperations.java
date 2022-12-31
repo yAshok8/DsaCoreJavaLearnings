@@ -1,6 +1,8 @@
 package DSA.trees.bst;
 
 
+import java.util.*;
+
 class TreeOperations {
 
     public static boolean isBalancedLinearComplexity(TreeNode root) {
@@ -9,7 +11,6 @@ class TreeOperations {
         }
         return checkIfBalanced(root) != -1;
     }
-
     private static int checkIfBalanced(TreeNode node) {
         if (null == node)
             return 0;
@@ -20,7 +21,6 @@ class TreeOperations {
             return -1;
         return 1 + Math.max(leftHeight, rightHeight);
     }
-
     public static boolean isBalancedSquareNComplexity(TreeNode root) {
         if (root == null)
             return true;
@@ -33,5 +33,57 @@ class TreeOperations {
         if (node == null) 
             return 0;
         return 1 + Math.max(calcHeight(node.left), calcHeight(node.right));
+    }
+
+    public static void levelOrder(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode head = queue.peek();
+            if (head.left != null) {
+                queue.add(head.left);
+            }
+            if (head.right != null) {
+                queue.add(head.right);
+            }
+            System.out.print(queue.remove().val + " ");
+        }
+    }
+
+    /**
+     * Leetcode problem link:
+     * https://leetcode.com/problems/binary-tree-level-order-traversal/
+     * @param root the root element
+     * @return The level order list
+     */
+    public static List<List<Integer>> levelOrderWithListData(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null)
+            return res;
+        res.add(Arrays.asList(root.val));
+        List<TreeNode> nextLevelNodes = childrenOf(Arrays.asList(root));
+        List<Integer> innerRes = null;
+        while (nextLevelNodes.size() != 0) {
+            innerRes = new ArrayList<>();
+            for (TreeNode node: nextLevelNodes) {
+                innerRes.add(node.val);
+            }
+            res.add(innerRes);
+            nextLevelNodes = childrenOf(nextLevelNodes);
+        }
+        return res;
+    }
+
+    private static List<TreeNode> childrenOf(List<TreeNode> asList) {
+        List<TreeNode> res = new ArrayList<>();
+        for (TreeNode node: asList) {
+            if (null != node.left) {
+                res.add(node.left);
+            }
+            if (null != node.right) {
+                res.add(node.right);
+            }
+        }
+        return res;
     }
 }
