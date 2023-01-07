@@ -86,4 +86,43 @@ class TreeOperations {
         }
         return res;
     }
+
+    /**
+     * Leetcode 103
+     * @param root the root node of the tree
+     * @return the list of list of elements
+     */
+    public static List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        Stack<TreeNode> s = new Stack<>();
+        boolean flip = false;
+        s.push(root);
+        while (!s.isEmpty()) {
+            Stack<TreeNode> temp = new Stack<>();
+            List<Integer> tempList = new ArrayList<>();
+            if (flip) {
+                while (!s.isEmpty()) {
+                    TreeNode node = s.pop();
+                    tempList.add(node.val);
+                    if (null != node.left)
+                        temp.push(node.left);
+                    if (null != node.right)
+                        temp.push(node.right);
+                }
+            } else {
+                while (!s.isEmpty()) {
+                    TreeNode node = s.pop();
+                    tempList.add(node.val);
+                    if (null != node.right)
+                        temp.push(node.right);
+                    if (null != node.left)
+                        temp.push(node.left);
+                }
+            }
+            res.add(tempList);
+            flip = !flip;
+            s = temp;
+        }
+        return res;
+    }
 }
