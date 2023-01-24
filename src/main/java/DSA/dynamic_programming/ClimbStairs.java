@@ -13,11 +13,34 @@ Explanation: There are two ways to climb to the top.
 
 class ClimbStairs {
     public static void main(String[] args) {
-        System.out.println(climbStairs(1));
+//        System.out.println(climbStairs(1));
 //        System.out.println(climbStairs(3));
-//        System.out.println(climbStairs(4));
+        System.out.println(climbStairs(7));
 //        System.out.println(climbStairs(5));
+        System.out.println(climbStairsRecursion(44));
     }
+
+    /**
+     * This is okay but less optimal solution.
+     * This can be tweaked by using DP
+     * @param n the input number
+     * @return the answer
+     */
+    public static int climbStairsRecursion(int n) {
+        return rec(n, 0);
+    }
+
+    private static int rec(int n, int i) {
+        if (i == n)
+            return 1;
+        int p2 = 0, p1 = 0;
+        if (i <= n - 2)
+            p2 = rec(n, i + 2);
+        if (i <= n - 1)
+            p1 = rec(n, i + 1);
+        return p1 + p2;
+    }
+
     public static int climbStairs(int n) {
         int [] dp = new int[n+1];
         dp[0] = 1; //this is how many step is required to climb 0 stair step, answer is 1
