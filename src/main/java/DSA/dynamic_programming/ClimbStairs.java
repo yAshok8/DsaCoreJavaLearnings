@@ -15,9 +15,9 @@ class ClimbStairs {
     public static void main(String[] args) {
 //        System.out.println(climbStairs(1));
 //        System.out.println(climbStairs(3));
-        System.out.println(climbStairs(7));
+        System.out.println(climbStairs(44));
 //        System.out.println(climbStairs(5));
-        System.out.println(climbStairsRecursion(44));
+        System.out.println(climbStairsRecursionDP(44));
     }
 
     /**
@@ -26,19 +26,24 @@ class ClimbStairs {
      * @param n the input number
      * @return the answer
      */
-    public static int climbStairsRecursion(int n) {
-        return rec(n, 0);
+    public static int climbStairsRecursionDP(int n) {
+        return rec(n, 0, new int[n]);
     }
 
-    private static int rec(int n, int i) {
+    private static int rec(int n, int i, int [] dp) {
         if (i == n)
             return 1;
         int p2 = 0, p1 = 0;
-        if (i <= n - 2)
-            p2 = rec(n, i + 2);
-        if (i <= n - 1)
-            p1 = rec(n, i + 1);
-        return p1 + p2;
+        if (dp[i] == 0) {
+            if (i <= n - 2) {
+                p2 = rec(n, i + 2, dp);
+            }
+            if (i <= n - 1) {
+                p1 = rec(n, i + 1, dp);
+            }
+            dp[i] = p1 + p2;
+        }
+        return dp[i];
     }
 
     public static int climbStairs(int n) {
