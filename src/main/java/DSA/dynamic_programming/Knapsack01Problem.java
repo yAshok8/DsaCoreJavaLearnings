@@ -58,3 +58,14 @@ public class Knapsack01Problem {
     }
 
 }
+
+/*
+* My Own Input
+*
+1
+4 3
+2 3
+2 8
+2 1
+*
+* */
