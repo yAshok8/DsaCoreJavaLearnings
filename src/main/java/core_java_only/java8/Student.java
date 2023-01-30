@@ -6,10 +6,13 @@ public class Student {
     private int id;
     private int age;
 
-    public Student(String name, int id, int age) {
+    private String city;
+
+    public Student(String name, int id, int age, String city) {
         this.name = name;
         this.id = id;
         this.age = age;
+        this.city = city;
     }
 
     public String getName() {
@@ -22,6 +25,10 @@ public class Student {
 
     public int getAge() {
         return age;
+    }
+
+    public String getCity() {
+        return city;
     }
 
     @Override

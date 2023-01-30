@@ -10,13 +10,13 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class GroupingByDemo {
     public static void main(String[] args) {
-        Student s1 = new Student("ashok", 1, 30);
-        Student s2 = new Student("mukesh", 2, 32);
-        Student s3 = new Student("jayesh", 3, 32);
-        Student s4 = new Student("ashok", 4, 18);
-        Student s5 = new Student("kashyap", 5, 30);
-        Student s6 = new Student("ashok", 6, 35);
-        Student s7 = new Student("pooja", 7, 18);
+        Student s1 = new Student("ashok", 1, 30, "Mumbai");
+        Student s2 = new Student("mukesh", 2, 32, "Banglore");
+        Student s3 = new Student("jayesh", 3, 32, "Lucknow");
+        Student s4 = new Student("ashok", 4, 18, "Banglore");
+        Student s5 = new Student("kashyap", 5, 30, "Mumbai");
+        Student s6 = new Student("ashok", 6, 35, "Chennai");
+        Student s7 = new Student("pooja", 7, 18, "Chennai");
 
         List<Student> studentList = Arrays.asList(s1, s2, s3, s4, s5, s6, s7);
 
