@@ -3,6 +3,7 @@ package core_java_only.java8;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
@@ -21,6 +22,7 @@ public class GroupingByDemo {
 
         toMapDemo(studentList);
         simpleGroupingBy(studentList);
+        groupingByNonList(studentList);
         groupingByReducingDemo(studentList);
 
         //collectors.mapping()
@@ -47,6 +49,18 @@ public class GroupingByDemo {
             System.out.println(student);
         }
     }
+
+    /**
+     * Instead of list, you want a set
+     * @param studentList the input
+     */
+    private static void groupingByNonList(List<Student> studentList) {
+        System.out.println("\nName to set mapping with groupingBy()");
+        Map<String, Set<Student>> ans = studentList.stream()
+                .collect(Collectors.groupingBy(Student::getName, Collectors.toSet()));
+        System.out.println(ans);
+    }
+
 
     /**
      * Suppose you want map of age and name of the students
