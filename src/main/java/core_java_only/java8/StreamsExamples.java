@@ -1,8 +1,6 @@
 package core_java_only.java8;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.OptionalInt;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -17,12 +15,18 @@ public class StreamsExamples {
         System.out.println("findMaxIntNum() => "+findMaxIntNum());
         System.out.println("findMinIntNum()  => "+findMinIntNum());
         System.out.println("countNumsInArr()  => "+countNumsInArr());
+        System.out.println("secondMaxInteger()  => "+secondMaxInterger());
         System.out.println("Calling sortingArrayWithStreams()");
         sortingArrayWithStreams();
         System.out.println("Calling findDistinctNumbersFromArray() ");
         findDistinctNumbersFromArray();
         System.out.println("Calling forEachDemo() ");
         forEachDemo();
+    }
+
+    private static int secondMaxInterger() {
+        List<Integer> numList = Arrays.asList(1, 3, 4, 5, -1, -5, 6, 6, 0, 2);
+        return numList.stream().distinct().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
     }
 
     private static int sumOfSquareOfOdd() {

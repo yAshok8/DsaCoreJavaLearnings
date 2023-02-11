@@ -1,7 +1,5 @@
 package core_java_only.Sorting;
 
-import java.util.Comparator;
-
 public class Student {
 
     int rollNo;
