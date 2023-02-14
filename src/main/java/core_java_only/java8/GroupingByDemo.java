@@ -1,31 +1,47 @@
 package core_java_only.java8;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 
 public class GroupingByDemo {
     public static void main(String[] args) {
-        Student s1 = new Student("ashok", 1, 30, "Mumbai");
-        Student s2 = new Student("mukesh", 2, 32, "Banglore");
+        Student s1 = new Student("Ashok", 1, 30, "Mumbai");
+        Student s2 = new Student("Mukesh", 2, 32, "Banglore");
         Student s3 = new Student("jayesh", 3, 32, "Lucknow");
-        Student s4 = new Student("ashok", 4, 18, "Banglore");
+        Student s4 = new Student("Ashok", 4, 18, "Banglore");
         Student s5 = new Student("kashyap", 5, 30, "Mumbai");
-        Student s6 = new Student("ashok", 6, 35, "Chennai");
+        Student s6 = new Student("Ashok", 6, 35, "Chennai");
         Student s7 = new Student("pooja", 7, 18, "Chennai");
+        Student s8 = new Student("Definate", 8, 15, "Banglore");
+        Student s9 = new Student("Tengent", 10, 20, "Mumbai");
+        Student s10 = new Student("Parpendicular", 9, 24, "Lucknow");
+        Student s11 = new Student("Sardaar Khan", 12, 30, "Mumbai");
+        Student s12 = new Student("Faizal", 11, 24, "Chennai");
 
-        List<Student> studentList = Arrays.asList(s1, s2, s3, s4, s5, s6, s7);
+        List<Student> studentList = Arrays.asList(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12);
+
 
         toMapDemo(studentList);
         simpleGroupingBy(studentList);
         groupingByNonList(studentList);
         groupingByReducingDemo(studentList);
 
-        //collectors.mapping()
+        //find sorted student names per city
+        groupingBySortedStudentNames(studentList);
+    }
+
+    private static void groupingBySortedStudentNames(List<Student> studentList) {
+        System.out.println("\nFind student names map with sorted cities");
+        //use this to solve this issue.
+        //https://stackoverflow.com/questions/35872236/sorting-lists-after-groupingby
+
+        //perform groupBy operation
+        Map<String, List<Student>> studentMapList = studentList.stream()
+                .collect(Collectors.groupingBy(Student::getCity));
+        studentMapList.values().forEach(list -> list.sort(Comparator.comparing(Student::getName)));
+        System.out.println(studentMapList);
     }
 
     private static void toMapDemo(List<Student> studentList) {
@@ -64,7 +80,7 @@ public class GroupingByDemo {
 
     /**
      * Suppose you want map of age and name of the students
-     * @param studentList
+     * @param studentList the input
      */
     private static void groupingByReducingDemo(List<Student> studentList) {
         System.out.println("\nAge to List<Name> mapping with groupingBy()");
