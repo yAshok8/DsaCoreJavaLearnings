@@ -1,6 +1,7 @@
 package core_java_only.java8;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -16,12 +17,23 @@ public class StreamsExamples {
         System.out.println("findMinIntNum()  => "+findMinIntNum());
         System.out.println("countNumsInArr()  => "+countNumsInArr());
         System.out.println("secondMaxInteger()  => "+secondMaxInterger());
+        System.out.println("findMaxFrequentElementInArray()  => "+findMaxFrequentElementInArray());
         System.out.println("Calling sortingArrayWithStreams()");
         sortingArrayWithStreams();
         System.out.println("Calling findDistinctNumbersFromArray() ");
         findDistinctNumbersFromArray();
         System.out.println("Calling forEachDemo() ");
         forEachDemo();
+    }
+
+    private static int findMaxFrequentElementInArray() {
+        int [] elems = new int[] {1,5,5,5,5,5,2,2,4,4,4,4,3,3,3};
+        Map<Integer, Long> occurrences = Arrays.stream(elems).boxed()
+                // Group the elements by their value and count them
+                .collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+        return occurrences.entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .get().getKey();
     }
 
     private static int secondMaxInterger() {
