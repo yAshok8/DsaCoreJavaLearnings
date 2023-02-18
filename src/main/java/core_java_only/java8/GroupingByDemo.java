@@ -29,10 +29,24 @@ public class GroupingByDemo {
         groupingByReducingDemo(studentList);
 
         //find sorted student names per city
-        groupingBySortedStudentNames(studentList);
+        groupingByCityAndSortedStudentObjects(studentList);
+        groupingByCityAndSortedStudentNames(studentList);
     }
 
-    private static void groupingBySortedStudentNames(List<Student> studentList) {
+    private static void groupingByCityAndSortedStudentNames(List<Student> studentList) {
+        System.out.println("\nFind student city to sorted name list map");
+        Map<String, List<String>> ans1 = studentList.stream()
+                .collect(groupingBy(Student::getCity, Collectors.mapping(Student::getName, Collectors.toList())));
+        ans1.values().forEach(list -> list.sort(Comparator.naturalOrder()));
+        System.out.println(ans1);
+    }
+
+    /**
+     * Get Map of city and List.
+     * Each list should be sorted in ascending order of city names.
+     * @param studentList the input
+     */
+    private static void groupingByCityAndSortedStudentObjects(List<Student> studentList) {
         System.out.println("\nFind student names map with sorted cities");
         //use this to solve this issue.
         //https://stackoverflow.com/questions/35872236/sorting-lists-after-groupingby
