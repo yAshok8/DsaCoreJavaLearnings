@@ -31,6 +31,50 @@ public class GroupingByDemo {
         //find sorted student names per city
         groupingByCityAndSortedStudentObjects(studentList);
         groupingByCityAndSortedStudentNames(studentList);
+
+        groupingByAgeClass(studentList);
+        multilevelGrouping(studentList);
+    }
+
+    /**
+     * Group as per the city and age class
+     * @param studentList the input
+     */
+    private static void multilevelGrouping(List<Student> studentList) {
+        System.out.println("\nGroup with city names and then find population corresponding to various age class");
+        Map<String, Map<String, Long>> multilevel = studentList.stream()
+                .collect(Collectors.groupingBy(Student::getCity, Collectors.groupingBy(student -> {
+                    if (student.getAge() < 20) {
+                        return "Young";
+                    } else if (student.getAge() <= 20 || student.getAge() < 30) {
+                        return "Mid";
+                    } else {
+                        return "Old";
+                    }
+                }, Collectors.counting())));
+        System.out.println(multilevel);
+    }
+
+    /**
+     * Classify the students list depending upon the age.
+     * < 20 : "Young"
+     * <= 20 < 30: "Mid"
+     * <= 30: "Old"
+     * @param studentList input
+     */
+    private static void groupingByAgeClass(List<Student> studentList) {
+        Map<String, List<String>> ageClassMap = studentList.stream().collect(Collectors.groupingBy(
+                student -> {
+                    if (student.getAge() < 20) {
+                        return "Young";
+                    } else if (student.getAge() <= 20 || student.getAge() < 30) {
+                        return "Mid";
+                    } else {
+                        return "Old";
+                    }
+                }, Collectors.mapping(Student::getName, Collectors.toList())
+        ));
+        System.out.println(ageClassMap);
     }
 
     private static void groupingByCityAndSortedStudentNames(List<Student> studentList) {
