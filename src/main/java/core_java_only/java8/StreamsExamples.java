@@ -20,12 +20,17 @@ public class StreamsExamples {
         System.out.println("secondMaxInteger()  => "+secondMaxInterger());
         System.out.println("findMaxFrequentElementInArray()  => "+findMaxFrequentElementInArray());
         System.out.println("mergeTwoSortedArrays()  => " + mergeTwoSortedArrays(new String[]{"1", "3", "5"}, new String[]{"2", "4"}));
+        System.out.println("joinStrings()  => " + joinStrings(new String[]{ "Ashok", "Birju", "Yadav"}));
         System.out.println("Calling sortingArrayWithStreams()");
         sortingArrayWithStreams();
         System.out.println("Calling findDistinctNumbersFromArray() ");
         findDistinctNumbersFromArray();
         System.out.println("Calling forEachDemo() ");
         forEachDemo();
+    }
+
+    private static String joinStrings(String[] inputStringArray) {
+        return Arrays.stream(inputStringArray).collect(Collectors.joining(" "));
     }
 
     private static List<String> mergeTwoSortedArrays(String [] arr1, String [] arr2) {
@@ -89,11 +94,11 @@ public class StreamsExamples {
     }
 
     private static int findMaxIntNum(){
-        return Arrays.asList(-9, -18, 0, 25, 4).stream().max(Integer::compare).get();
+        return Stream.of(-9, -18, 0, 25, 4).max(Integer::compare).get();
     }
 
     private static int findMinIntNum(){
-        return Arrays.asList(-9, -18, 0, 25, 4).stream().min(Integer::compare).get();
+        return Stream.of(-9, -18, 0, 25, 4).min(Integer::compare).get();
     }
 
     private static void sortingArrayWithStreams(){
