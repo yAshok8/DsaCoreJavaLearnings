@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class StreamsExamples {
     public static void main(String[] args) {
@@ -18,6 +19,7 @@ public class StreamsExamples {
         System.out.println("countNumsInArr()  => "+countNumsInArr());
         System.out.println("secondMaxInteger()  => "+secondMaxInterger());
         System.out.println("findMaxFrequentElementInArray()  => "+findMaxFrequentElementInArray());
+        System.out.println("mergeTwoSortedArrays()  => " + mergeTwoSortedArrays(new String[]{"1", "3", "5"}, new String[]{"2", "4"}));
         System.out.println("Calling sortingArrayWithStreams()");
         sortingArrayWithStreams();
         System.out.println("Calling findDistinctNumbersFromArray() ");
@@ -25,6 +27,12 @@ public class StreamsExamples {
         System.out.println("Calling forEachDemo() ");
         forEachDemo();
     }
+
+    private static List<String> mergeTwoSortedArrays(String [] arr1, String [] arr2) {
+        String[] ans = Stream.concat(Arrays.stream(arr1), Arrays.stream(arr2)).sorted().toArray(String[]::new);
+        return Arrays.asList(ans);
+    }
+
 
     private static int findMaxFrequentElementInArray() {
         int [] elems = new int[] {1,5,5,5,5,5,2,2,4,4,4,4,3,3,3};
