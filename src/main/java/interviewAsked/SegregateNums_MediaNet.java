@@ -1,12 +1,12 @@
 package interviewAsked;
 
-public class SeggregateNums_MediaNet {
+public class SegregateNums_MediaNet {
     public static void main(String[] args) {
         int [] nums = new int[] {2,2,1,1,0,1};
-        seggregate(nums);
+        segregate(nums);
     }
 
-    private static void seggregate(int[] nums) {
+    private static void segregate(int[] nums) {
         int l = 0;
         int r = nums.length - 1;
         int currNum = 0;
