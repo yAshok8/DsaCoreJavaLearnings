@@ -20,6 +20,7 @@ public class StreamsExamples {
         System.out.println("secondMaxInteger()  => "+secondMaxInterger());
         System.out.println("findMaxFrequentElementInArray()  => "+findMaxFrequentElementInArray());
         System.out.println("mergeTwoSortedArrays()  => " + mergeTwoSortedArrays(new String[]{"1", "3", "5"}, new String[]{"2", "4"}));
+        System.out.println("filterAndMapEvenNumAndSquare() " + filterAndMapEvenNumAndSquare(new int[]{1, 2, 3, 4, 5}));
         System.out.println("joinStrings()  => " + joinStrings(new String[]{ "Ashok", "Birju", "Yadav"}));
         System.out.println("Calling sortingArrayWithStreams()");
         sortingArrayWithStreams();
@@ -27,6 +28,18 @@ public class StreamsExamples {
         findDistinctNumbersFromArray();
         System.out.println("Calling forEachDemo() ");
         forEachDemo();
+    }
+
+    /**
+     * Create a map of even number and their square
+     *
+     * @param ints input
+     * @return map
+     */
+    private static Map<Integer, Integer> filterAndMapEvenNumAndSquare(int[] ints) {
+        return Arrays.stream(ints).boxed()
+                .filter(num -> num % 2 == 0)
+                .collect(Collectors.toMap(Function.identity(), n -> n*n));
     }
 
     private static String joinStrings(String[] inputStringArray) {
