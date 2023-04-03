@@ -274,3 +274,10 @@ Emirates Un-Answered Questions
         > You can traverse and add them to response object and sent them to client in response.
 
 8. Difference in Put vs Post vs Patch.
+
+NSE Full stack development interview questions
+----------------------------------------------
+
+1. @Attainable annotation
+2. Listening to multiple topics in Kafka
+3. Listening to multiple consumer groups.
