@@ -1,6 +1,6 @@
 package interviewAsked;
 
-public class SegregateNums_MediaNet {
+public class SegregateNums_MediaNet_unfinished {
     public static void main(String[] args) {
         int [] nums = new int[] {2,2,1,1,0,1};
         segregate(nums);
