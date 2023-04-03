@@ -26,7 +26,7 @@ Birlasoft Interview Questions
 1. How do we secure web services.
 2. How to validate incoming DTO in rest web services.
 3. How we deploy on AWS.
-4. @ControllerAdvice annootation
+4. @ControllerAdvice annotation
 @. @Async annotation in Spring.
 
 2nd Round
@@ -34,9 +34,12 @@ Birlasoft Interview Questions
 1. How do you set up dynamic config properties in spring boot.
 	Means what do you do if you want your application to dynamically pick the configuration without restart?
 2. Effectively final in java 8.
+    The method variables outside the streams in java become final (cant be changed) inside the stream.
 3. You have a Singleton bean and you have a prototype dependency bean inside that.
 	You want to initialize the dependent bean all the time, what would you do?
+	Answer below (use of @Lookup annotation)
 4. What does Feign client do? Why we use it?
+    Feign client is used to mock the rest call via an interface. Its being developed by Netflix Spring Cloud.
 5. List of string is there, we need to create a map of string and its length from that list using java 8.
 	Ans: list.stream().collect(Collectors.toMap(e->e, String::length));
 
