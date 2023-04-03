@@ -257,6 +257,9 @@ Emirates Un-Answered Questions
     -> This criteria defines various annotations.
     -> The implementation we use for this criteria is also known as Hibernate Validator.
     -> @NotNull, @Email, @Size, @Min, @Max, @NotEmpty...
+    -> Example:
+        > @Size(min=4, message="The value must be minimum of 4 characters")
+        > @Pattern(regex="some regex")
     -> We need to use spring-boot-starter-validation dependency.
     -> We should use the annotations above properties in bean class.
     -> We must enable the same from the controller class like below.
@@ -264,5 +267,10 @@ Emirates Un-Answered Questions
         > @PostMappig
           public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UserDto user) {}
     -> And, That's it!
+    -> How we can let caller (client) know about the validation failures.
+        > The above validation failures generates MethodArgumentNotValidException
+        > We can handle the above Exception in GlobalExceptionHandler class with @ExceptionHandler class.
+        > This will send the data to exception object passed to the handler method.
+        > You can traverse and add them to response object and sent them to client in response.
 
 8. Difference in Put vs Post vs Patch.
