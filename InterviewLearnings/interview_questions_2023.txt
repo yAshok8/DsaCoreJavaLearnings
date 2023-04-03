@@ -1,0 +1,249 @@
+1. Static method purpose in java 8 interface.
+2. How you send response in rest endpoint.
+3. @ResponseStatus
+4. How do you handle spring boot exceptions.
+5. How many way for microservices communications. (Said kafka and RestExchange. He asked others too)
+6. How CRUD operation is performed.
+7. How to create a object with lombok builder.
+8. Different ways of dependency injection.
+9. How do you validate input DTO object using spring.
+10. Difference between @Controller and @RestController.
+	=> @Controller means just a web controller.
+	If you are using @Controller, you are bound to use @ResponseBody for the endpoint methods for it to successfully return the data back to caller.
+	@RestController comes handy with @ResponseBody. Here you no need to use this. The spring will by default use that.
+	=> @Controller is specialized version of @Component and @RestController is specialized version of @Controller.
+11. Difference between @RequestMapping and @GetMapping.
+12. PathVariable vs PathParams
+
+Note:
+Complete Example of Controller class.
+https://www.javaguides.net/2018/11/spring-getmapping-postmapping-putmapping-deletemapping-patchmapping.html#:~:text=The%20GET%20HTTP%20request%20is,GET).
+
+-------------------------------------------------------------------------------
+
+Birlasoft Interview Questions
+-----------------------------
+1. How do we secure web services.
+2. How to validate incoming DTO in rest web services.
+3. How we deploy on AWS.
+4. @ControllerAdvice annootation
+@. @Async annotation in Spring.
+
+2nd Round
+
+1. How do you set up dynamic config properties in spring boot.
+	Means what do you do if you want your application to dynamically pick the configuration without restart?
+2. Effectively final in java 8.
+3. You have a Singleton bean and you have a prototype dependency bean inside that.
+	You want to initialize the dependent bean all the time, what would you do?
+4. What does Feign client do? Why we use it?
+5. List of string is there, we need to create a map of string and its length from that list using java 8.
+	Ans: list.stream().collect(Collectors.toMap(e->e, String::length));
+
+-------------------------------------------------------------------------------
+
+ValueLabs Interview Questions
+-----------------------------
+
+-------------------------------------------------------------------------------
+Nomura 2nd Round Interview
+---------------------------
+-> Server Clustering
+-> Transaction Isolation Level
+-> Default Stack Memory
+-> Java Memory Model
+-> You have many to many tables Student, Subject
+	name, subject
+	S1, Maths
+	S2, Maths
+	S2, History
+	S1, Science
+
+Write a query which will fetch student who have Maths but not Science.
+
+Output:
+S2 (S2 has Maths only but not science.)
+
+-------------------------------------------------------------------------------
+
+HereMaps Round 1 Interview Questions
+-------------------------------------
+
+Whats provider dependency in gradle?
+What are fat jar?
+	Jars with all dependencies wrapped along with compiled code.
+use case of proxy design pattern?
+	@Transaction in Spring.
+Have you ever done memory tuning? How can you increase/decrease java memory?
+OOPS Principle? Encapsulation? (done)
+What are the benifits of Wrapper classes?
+	Wrapper classes can only be used with Collections.
+	You can use many utilities from java.lang package with wrapper objects.
+
+
+HereMaps Round 2 interview Questions
+-------------------------------------
+
+Encapsulation vs Abstraction:
+	Abstraction can be achieved using abctract classes. The abstract methods in abctract class signifies idea instead
+	of implementation. Like for example phone's feature. A phone can call() or takePhoto(). Be it an iphone or Samsung phone. You dont need how they implement the call() or takePhoto() feature. So an abstract class called Phone can be made with 2 abstract methods like call() and takePhoto(). These methods can then be implemented by concrete classes called IPhone and Samsung.
+
+Exception Hierarchy
+											  Throwable
+	Exception 														Error
+	RuntimeException IOException InterruptedException
+Rehashing in HashMap:
+	Happens as per the load factor.
+	Initial size 16 (2^4) when it increases its size becomes (2^5) i.e. 32.
+How you store employee objects in Sorted Format.
+	You need to use TreeSet.
+	For a custom object storage you would need a comparator or comparable for sorting purpose.
+
+How you create a custom exception
+	By extending either Exception class (checked exception) or extending RuntimeException class (unchecked exception).
+
+EY interview Questions
+----------------------
+
+How you disable autowiring?
+	Simply dont use @EnableAutoWiring with @SpringBootApplication annotation. This will disable the feature only.
+	If you want some specific autowiring disable, you can use exclude flag in @SpringBootApplication.
+	@SpringBootApplication(exclude = { MongoAutoConfiguration.class })
+
+Can we use hashcode, equals in java 9 Interfaces?
+	Java has a rule: If a class implements a method, it always wins over default implementation.
+	Means By default any class in java is a subclass of Object and can provide its own implementation by default.
+	Therefore, default implementation in the interface is useless.
+
+What is the use of @FunctionalInterface?
+	It raises error if you create multiple abstract methods.
+
+Jp morgan Interview Questions
+------------------------------
+
+Q. Resolving circular dependency
+
+	Use @Lazy annotation with any of the dependencies at the time of Autowiring.
+	Spring will inject a proxy first. When needed later, it will create actual bean and inject.
+
+Max size of topic data in kafka
+
+	Default size is 1MB per message in topic
+
+Q. @lookup annotation
+	OR
+Outer Singleton and inner Prototype bean. How will it work?
+
+	Injecting prototype in singleton bean will create only one instance of prototype bean and inject it in singleton one.
+	Now If we want a new prototype to be injected in singleton bean everytime we use singleton then there are 2 ways.
+	1. use applicationcontext.
+
+		@Autowired
+		ApplicationContext applicationcontext;
+
+		@GetMapping("/someurl")
+		public String method() {
+			return applicationcontext.getBean("dependencyBeanName", DependencyBeanName.class).dependencyBeanNameClassMethod();
+		}
+
+		In the above code we are manually asking application context to create a dependency bean and usig its method.
+		This is not the right approach/practice to create a prototype bean.
+
+	2. Use of @Lookup method.
+
+		@GetMapping("/someurl")
+		public String method() {
+			getDependencyBeanObjectMethod.dependencyBeanNameClassMethod();
+		}
+
+		@Lookup
+		public DependencyBeanName getDependencyBeanObjectMethod() {
+			return null;
+		}
+
+		If you see the getDependencyBeanObjectMethodis returning null but being annotated with @Lookup annotation.
+		Spring will internally use cg lib to override the method and provide you the new object every time you call the get endpoint method.
+
+what is ObjectFactory in spring?
+	Ans:
+
+Priority in @Primary and @Qualifier annotations
+	Ans: @Qualifier has the higher priority.
+
+
+Emirates Un-Answered Questions
+-------------------------------
+
+1. @ControllerAdvice Annotation
+
+	Suppose below handler you have written inside a controller class say, UserController.
+
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@ExceptionHandler(value = NumberFormatException.class)
+	public String handleNFException(Model m) {
+		m.addAttribute("msg", "NF Exception occured.");
+		return "null page";
+	}
+
+	If you find the NumberFormatException inside UserController, then only this will be called.
+	If you want to define this on project level, means whereever you get NumberFormatException this method should execute, you need to create a generic exception handler class.
+	This class should be annotated with @ControllerAdvice annotation. This will let spring decide this is generic class written for exception handling purpose.
+
+	@ControllerAdvice
+	public class GenericExceptionHandlerClass {
+		...
+	}
+
+2. Bean Life Cycle
+
+	Spring provides 2 methods to every bean objects in their life.
+	a. public void init() {//initialization code happens after constructor.}
+	b. public void destroy() {//cleanup code}
+
+	Annotation based life cycle hook methods.
+
+	@PostConstruct, @PreDestroy
+
+	Note: in case of enabling above spring annotations you need to add an extra tag in spring config xml. <context:annotation-config />
+
+3. Thread Local
+
+	ThreadLocal tlObj = new ThreadLocal();
+	tlObj.set(data);
+	tlObj.remove();
+
+4. Reading large files in java.
+
+	You can use java nio package to read a large file in java. This will read the file content line by line.
+
+5. Reading, Processing and Writing 1TB file to the database.
+
+
+	The large file, around 1 TB in size can be processed using Spring Batch/in memory read.
+	But, using spring batch is not the appropriate way. We need to use something else which is suitable for this scenario.
+	We can use the combination of Apache kafka and spark.
+	You create an executor framework, where each thread can read the file publishes the content to kafka topics. Spark engin acts as a consumer which can consume the data parallely from the topic, processes them and perform DB writes.
+
+6. Cascading in Hibernate
+
+	Suppose we have one to many relationship between Question and Answers.
+	If you initialize question and set all the answers of that object. Now, if you do
+
+		tx.save(questionObj);
+
+	This will just persist question in question table in database.
+	The answers will not be saved in answer table.
+	You have to explicitely save all the answers like below.
+
+		tx.save(ans1);
+		tx.save(ans2);
+		tx.save(ans3);
+
+	OR ELSE you can use hibernate cascading as well.
+
+	When you define OnetoMany relationship in Question class you can specify cascading.
+
+		@OnetoMany(mappedBy="question", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+		private List<Answer> answers;
+
+	CascadeType.ALL ensures all of the changes will be cascaded. If you delete question answers too will be deleted. If you add questions answers too will be added (provided the list of answers in question have to be set).
