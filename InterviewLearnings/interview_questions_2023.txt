@@ -280,4 +280,23 @@ NSE Full stack development interview questions
 
 1. @Attainable annotation
 2. Listening to multiple topics in Kafka
-3. Listening to multiple consumer groups.
+3. Listening to multiple consumer groups
+4. Completable future termination
+
+Command Query Responsibility Segregation
+
+-> SAGA
+    > This is the design principal used in microservice based projects.
+    > There are 2 varieties of this.
+        : Orchestration => Only one service calling multiple service one after other in a
+        predefined flow. Example Order Service calls 1st Payment service, 2nd Inventory service
+        and lastly Delivery service.
+        : Choreography => Here services are interacting with each other via an event. One service
+        is not bothered about calling another service post it finishes its job. It just publishes
+        an event of its state and whoever has subscribed to that event will resume its part after
+        consuming the same.
+        Example Order service will emit order created event and then Payment
+        service will resume its part. There can be 2 events with payment one.
+        a. Payment successful event: Will be picked by Inventory update service
+        b. Payment failure event: Will be picked by Failure service.
+    > And, so on.
