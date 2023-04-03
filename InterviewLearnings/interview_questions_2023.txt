@@ -250,3 +250,19 @@ Emirates Un-Answered Questions
 		private List<Answer> answers;
 
 	CascadeType.ALL ensures all of the changes will be cascaded. If you delete question answers too will be deleted. If you add questions answers too will be added (provided the list of answers in question have to be set).
+
+7. Validating of java beans on server side.
+
+    -> Done by jsr 380 criteria.
+    -> This criteria defines various annotations.
+    -> The implementation we use for this criteria is also known as Hibernate Validator.
+    -> @NotNull, @Email, @Size, @Min, @Max, @NotEmpty...
+    -> We need to use spring-boot-starter-validation dependency.
+    -> We should use the annotations above properties in bean class.
+    -> We must enable the same from the controller class like below.
+        > use @Valid annotation just before @RequestBody annotation.
+        > @PostMappig
+          public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UserDto user) {}
+    -> And, That's it!
+
+8. Difference in Put vs Post vs Patch.
