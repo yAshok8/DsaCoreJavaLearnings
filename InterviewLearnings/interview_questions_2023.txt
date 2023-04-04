@@ -301,3 +301,21 @@ Command Query Responsibility Segregation
         a. Payment successful event: Will be picked by Inventory update service
         b. Payment failure event: Will be picked by Failure service.
     > And, so on.
+
+Virtusa | Emirates NB interview questions
+-----------------------------------------
+
+1. Observer DP
+2. Strategy DP
+3. Traversing the Hashmap in functional way
+4. How you implement an in memory cache in java
+5. Logging and tracing
+6. How you will implement Open Closed principle
+7. Have you ever used custom annotation in spring
+8. Difference between RestTemplate and WebClient
+9. How you handle exception in spring
+10. How you write basic consumer and producer in Kafka.
+11. Rolling back the transaction in distributed service. => Ans is 2PC
+12. How you implement circuit breakers in microservices?
+
+Note: To know more about this you can search in your email for a mail from Mohan Veerbhadra.
