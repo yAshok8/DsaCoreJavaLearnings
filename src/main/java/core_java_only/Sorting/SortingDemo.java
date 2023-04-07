@@ -2,9 +2,7 @@ package core_java_only.Sorting;
 
 import core_java_only.java8.Employee;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SortingDemo {
@@ -27,7 +25,14 @@ public class SortingDemo {
 
 //        sortUsingJava7(new ArrayList<>(studentList));
 //        sortUsingJava8(new ArrayList<>(studentList));
-        sortUsingJava8TwoFields(new ArrayList<>(studentList));
+//        sortUsingJava8TwoFields(new ArrayList<>(studentList));
+        sortStringsCaseInsensitive();
+    }
+
+    private static void sortStringsCaseInsensitive() {
+        List<String> list = Arrays.asList("Pineapple", "apple", "banana");
+        list.sort(String.CASE_INSENSITIVE_ORDER);
+        System.out.println(list);
     }
 
     private static void sortUsingJava8TwoFields(ArrayList<Student> students) {
