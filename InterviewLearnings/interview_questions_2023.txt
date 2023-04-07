@@ -319,3 +319,7 @@ Virtusa | Emirates NB interview questions
 12. How you implement circuit breakers in microservices?
 
 Note: To know more about this you can search in your email for a mail from Mohan Veerbhadra.
+
+Altres Technology Interview Questions
+-------------------------------------
+What is a loose coupling?
