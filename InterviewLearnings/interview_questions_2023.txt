@@ -323,3 +323,13 @@ Note: To know more about this you can search in your email for a mail from Mohan
 Altres Technology Interview Questions
 -------------------------------------
 What is a loose coupling?
+
+SmartStreams Technology
+-----------------------
+
+1. Design time bound rate limiter on service side
+   Say in 2 mins you don't want more than 1000 requests to hit. If 1001st request comes you need to send too many requests response.
+2. How you check your application is performing slow.
+3. How you check memory issues of your application.
+4. How many types of memory your applications uses and how you change them?
+5. How you decide threads for your executor service.
