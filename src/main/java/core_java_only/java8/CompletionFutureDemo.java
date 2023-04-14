@@ -2,13 +2,13 @@ package core_java_only.java8;
 
 import java.util.concurrent.CompletableFuture;
 
-public class CompletionStageDemo {
+public class CompletionFutureDemo {
     public static void main(String[] args) {
-        CompletableFuture.supplyAsync(CompletionStageDemo::getOrder)
-                .thenApply(CompletionStageDemo::processOrder)
-                .thenApply(CompletionStageDemo::processPayment)
-                .thenApply(CompletionStageDemo::dispatch)
-                .thenAccept(CompletionStageDemo::sendEmail);
+        CompletableFuture.supplyAsync(CompletionFutureDemo::getOrder)
+                .thenApply(CompletionFutureDemo::processOrder)
+                .thenApply(CompletionFutureDemo::processPayment)
+                .thenApply(CompletionFutureDemo::dispatch)
+                .thenAccept(CompletionFutureDemo::sendEmail);
     }
 
     public static Order getOrder() {

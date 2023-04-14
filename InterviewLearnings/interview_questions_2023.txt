@@ -189,8 +189,10 @@ Emirates Un-Answered Questions
 	}
 
 	If you find the NumberFormatException inside UserController, then only this will be called.
-	If you want to define this on project level, means whereever you get NumberFormatException this method should execute, you need to create a generic exception handler class.
-	This class should be annotated with @ControllerAdvice annotation. This will let spring decide this is generic class written for exception handling purpose.
+	If you want to define this on project level, means where ever you get NumberFormatException this
+	method should execute, you need to create a generic exception handler class.
+	This class should be annotated with @ControllerAdvice annotation. This will let spring
+	decide this is generic class written for exception handling purpose.
 
 	@ControllerAdvice
 	public class GenericExceptionHandlerClass {
