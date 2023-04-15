@@ -350,6 +350,22 @@ SmartStreams Technology
 1. Design time bound rate limiter on service side
    Say in 2 mins you don't want more than 1000 requests to hit. If 1001st request comes you need to send too many requests response.
 2. How you check your application is performing slow.
+    OR
 3. How you check memory issues of your application.
+    Profiling: Checks performance of the application like method call time, resource usage by the system and memory usage.
+    Example: Java VisualVM, JProfiler.
+    Logging and Tracing.
+    Load Testing/Stress testing: Apache JMeter can be used, This sends huge amount of requests to service and you can get to measure
+    the system performance by various metrics.
+    Memory profiling: You can take heap dump to see memory related issues. Example: Java Mission Control.
 4. How many types of memory your applications uses and how you change them?
+    Answer is above
 5. How you decide threads for your executor service.
+    Many deciding factors to check.
+        a. Task characteristics: if the task is i/o bound or cpu bound.
+            > For i/o operation increasing threads beyond no. of processes available is good idea
+            > if your task is cpu bound (means complex computation is required) then, increasing thread numbers is not a good idea
+            as this might lead to performance overhead.
+        b. Resource availability: check system resource, memory present.
+        c. Experimentation/tuning: checking the performance of the system using multiple threads config in the application and
+            picking the best/optimal number.
