@@ -16,12 +16,16 @@ import java.util.Arrays;
  */
 public class SummerSaleProblem_NSEIT {
     public static void main(String[] args) {
-        int[] prices = {100, 50, 75, 121};
-        int discount = 35;
-
-        double total = calculateTotalPriceMine(prices, discount);
-        System.out.println(total);  // Output: 295
+//        int[] prices = {100, 50, 75, 121};
+//        int discount = 35;
+//
+//        double total = calculateTotalPriceMine(prices, discount);
+//        System.out.println(total);  // Output: 295
 //        System.out.println(Math.round(total));  // Output: 295
+
+        //This is the other problem from the same test
+        double sum = Double.parseDouble("99.35") + Double.parseDouble("1.10");
+        System.out.println(Math.round(sum * 100.0) / 100.0);
     }
 
     private static double calculateTotalPriceMine(int[] prices, int discount) {
