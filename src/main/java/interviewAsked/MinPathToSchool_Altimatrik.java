@@ -3,7 +3,8 @@ package interviewAsked;
 import java.util.*;
 
 /**
- * Problem Description: https://leetcode.com/discuss/interview-question/580059/software-developer-interview-question-just-come-across
+ * Problem Description:
+ * https://leetcode.com/discuss/interview-question/580059/software-developer-interview-question-just-come-across
  */
 public class MinPathToSchool_Altimatrik {
     public static void main(String[] args) {

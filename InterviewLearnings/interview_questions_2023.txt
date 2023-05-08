@@ -369,3 +369,19 @@ SmartStreams Technology
         b. Resource availability: check system resource, memory present.
         c. Experimentation/tuning: checking the performance of the system using multiple threads config in the application and
             picking the best/optimal number.
+
+ADCB Bank Interview Questions
+-----------------------------
+
+1. Kubernates, containerization using docker.
+2. How load balancer works
+3. If You have db which is continuously being updated (added new rows).
+	You have new threads being spawned every minute. You need to ensure if a thread
+	is initializing, it has to read the new records. like first thread read 500,
+	the next one to read next 500. How can you achieve this?
+4. Optimistic vs Passimistic reads in JPA
+5. You have to read from DB when your application starts up (all the time).
+	How can you do that?
+6. If you are calling a server which is giving error. How you are handling in your client (caller)
+	application?
+7. ServiceDiscovery using Eureka Naming Server.
