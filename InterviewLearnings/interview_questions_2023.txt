@@ -45,8 +45,21 @@ Birlasoft Interview Questions
 
 -------------------------------------------------------------------------------
 
-ValueLabs Interview Questions
+JPMC Another Interview 
 -----------------------------
+
+1. Type Erasure in Generics
+2. Difference between Type and Wildcard in Generics
+3. Try with resource and catch. Will catch block will have the resource?
+4. How you enable basic authentication in spring?
+5. How you do versioning your web service?
+6. Explain Template and Adapter Design patterns.
+7. Have you ever worked on Spring Integration?
+8. Explain Spy in Mockito.
+9. If you create any object with @Bean and @Component, Will there be 2 separate objects created?
+10. What is difference between Controller and RestController?
+11. Difference between War and Jar?
+12. How to use @ResponseBody Annotation?
 
 -------------------------------------------------------------------------------
 Nomura 2nd Round Interview
