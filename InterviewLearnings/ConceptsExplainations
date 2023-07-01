@@ -1,0 +1,28 @@
+CircuitBreaker Explained
+	: Pattern is used for responding with default response if the current service is down.
+	: States of CB
+		-> Closed: Means the circuit is working fine.
+		-> Open: Means if a threshold reaches, the state of CB changes to open.
+			Will stay in open for some configured time and changes state to half open.
+		-> Half open: Means as per configuration some requests will check if service is 
+			responsing. If not its state will again change to open or else closed.
+	: How to implement in spring boot
+		-> You need to add actuator, resiliance4j and spring boot starter app
+		-> You use @CircuitBreaker(name=CBName, fallBackMethod=methodName) annotation
+			=> Example:
+				@CircuitBreaker(name="circuitBreaker", fallBackMethod="methodName")
+				public List<Student> getStudent(...) {...}
+				public List<Student> methodName(...) {...}
+			=> name: name of the circuit breaker config (which will be defined in prop file)
+			=> fallBackMethod: the method name which will be invoked if the breaker opens. 
+				The methods return type will be same as that of over which the CB is used.
+	: Important configs: 
+		resilience4j:
+			circuitBreaker:
+				instances:
+					CBName:
+						failureRateThreashold: 50 (State changes to open)
+						minimumNumberOfCalls: 5 (no of req to check threshold)
+						waitDurationInOpenState: 5s (open to half open state change)
+						automaticTransitionFromOpenToHalfOpenStateEnabled: true
+						permittedNumberOfCallsInHalfOpenState: 3 (no of requests to check to move from HO to O or C)
