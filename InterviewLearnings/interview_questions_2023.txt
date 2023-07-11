@@ -353,6 +353,13 @@ Virtusa | Emirates NB interview questions
 
 Note: To know more about this you can search in your email for a mail from Mohan Veerbhadra.
 
+ValueLabs Emirates NBD interview questions
+------------------------------------------
+
+1. Peek method (used for debug in streams based methods, Its execution depends upon immediate next processing methods)
+2. Project Architecture
+3. Finding first unique character from the String.
+
 Altres Technology Interview Questions
 -------------------------------------
 What is a loose coupling?
