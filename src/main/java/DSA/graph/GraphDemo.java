@@ -1,12 +1,10 @@
 package DSA.Graph;
 
-import leetcode.PathExistsInGraphLC1971;
-
 import java.util.*;
 
-public class GraphMain {
+public class GraphDemo {
     public static void main(String[] args) {
-        GraphClass graph = new GraphClass();
+        Graph graph = new Graph();
         for (int i = 1; i <= 7; i++) {
             graph.addVertex(i);
         }
@@ -17,14 +15,26 @@ public class GraphMain {
         graph.addEdge(2, 4);
         graph.addEdge(3, 7);
         graph.addEdge(6, 6);
-        //printing the graph
-//        graph.printGraph();
-        bfsTraversal(graph, 1);
-        System.out.println(new PathExistsInGraphLC1971().validPath(3, new int[][] {{0,1},{1,2},{2,0}}, 0, 2));
-//        System.out.println(validPathCopied(3, new int[][] {{0,1},{1,2},{2,0}}, 0, 2));
+//        bfs(graph, 1);
+        //LC 1971
+        //System.out.println(new PathExistsInGraphLC1971().validPath(3, new int[][] {{0,1},{1,2},{2,0}}, 0, 2));
+        dfs(graph, 1);
     }
 
-    private static void bfsTraversal(GraphClass graph, int sourceNode) {
+    private static void dfs(Graph graph, int sourceNode) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(sourceNode);
+        while (!stack.isEmpty()) {
+            int currNode = stack.pop();
+            System.out.println(currNode+" ");
+            List<Integer> neighbours = graph.getAdjacencyList().get(currNode);
+            for (int neigh: neighbours) {
+                stack.push(neigh);
+            }
+        }
+    }
+
+    private static void bfs(Graph graph, int sourceNode) {
         Map<Integer, List<Integer>> adjList = graph.getAdjacencyList();
         Set<Integer> visitedNodes = new HashSet<>();
         Queue<Integer> queue = new LinkedList<>();
