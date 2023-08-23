@@ -18,10 +18,10 @@ public class GraphDemo {
 //        bfs(graph, 1);
         //LC 1971
         //System.out.println(new PathExistsInGraphLC1971().validPath(3, new int[][] {{0,1},{1,2},{2,0}}, 0, 2));
-        dfs(graph, 1);
+        dfsIncomplete(graph, 1);
     }
 
-    private static void dfs(Graph graph, int sourceNode) {
+    private static void dfsIncomplete(Graph graph, int sourceNode) {
         Stack<Integer> stack = new Stack<>();
         stack.push(sourceNode);
         while (!stack.isEmpty()) {
