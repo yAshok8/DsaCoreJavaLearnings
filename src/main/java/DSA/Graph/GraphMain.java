@@ -1,4 +1,6 @@
-package DS;
+package DSA.Graph;
+
+import leetcode.PathExistsInGraphLC1971;
 
 import java.util.*;
 
@@ -17,9 +19,8 @@ public class GraphMain {
         graph.addEdge(6, 6);
         //printing the graph
 //        graph.printGraph();
-//        dfsTraversal(graph, 1);
-//        System.out.println(validPath(20000, Read2DArrayFromFile.readFile(), 0, 19999));
-        System.out.println(validPath(3, new int[][] {{0,1},{1,2},{2,0}}, 0, 2));
+        bfsTraversal(graph, 1);
+        System.out.println(new PathExistsInGraphLC1971().validPath(3, new int[][] {{0,1},{1,2},{2,0}}, 0, 2));
 //        System.out.println(validPathCopied(3, new int[][] {{0,1},{1,2},{2,0}}, 0, 2));
     }
 
@@ -42,32 +43,4 @@ public class GraphMain {
         }
     }
 
-    private static boolean validPath(int n, int[][] edges, int source, int destination) {
-        ArrayList[] graph = new ArrayList[n];
-        for (int i=0;i<n;i++) {
-            graph[i] = new ArrayList<>();
-        }
-        for (int[] path : edges) {
-            graph[path[0]].add(path[1]);
-            graph[path[1]].add(path[0]);
-        }
-        boolean[] visited = new boolean[n];
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(source);
-        while (!queue.isEmpty()) {
-            int currNode = queue.poll();
-            //why to visit the adjacent nodes of the current node if they are already covered
-            if(visited[currNode])
-                continue;
-            if (currNode == destination)
-                return true;
-            visited[currNode] = true;
-            List<Integer> currNodes = graph[currNode];
-            //add all nodes which has the connections from the current node.
-            for (int node : currNodes) {
-                queue.add(node);
-            }
-        }
-        return false;
-    }
 }

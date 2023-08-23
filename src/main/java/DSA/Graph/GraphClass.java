@@ -1,4 +1,4 @@
-package DS;
+package DSA.Graph;
 
 import java.util.ArrayList;
 import java.util.HashMap;

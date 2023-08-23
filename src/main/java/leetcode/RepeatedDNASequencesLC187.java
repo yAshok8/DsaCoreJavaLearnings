@@ -4,9 +4,9 @@ import java.util.*;
 
 public class RepeatedDNASequencesLC187 {
     public static void main(String[] args) {
-//        String s = "ACGTPACGT";
+        String s = "ACGTPACGT";
 //        String s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT";
-        String s = "AAAAAAAAAAAAA";
+//        String s = "AAAAAAAAAAAAA";
         System.out.println(findRepeatedDnaSequences(s));
     }
     public static List<String> findRepeatedDnaSequences(String s) {
