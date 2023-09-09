@@ -1,6 +1,6 @@
 package leetcode;
 
-class ReverseLinkedListIILC92Unfinished {
+class ReverseLinkedListIILC92 {
 
     public static void main(String[] args) {
         ListNode start = new ListNode(1);
@@ -8,35 +8,66 @@ class ReverseLinkedListIILC92Unfinished {
         start.next.next = new ListNode(3);
         start.next.next.next = new ListNode(4);
         start.next.next.next.next = new ListNode(5);
-        reverseBetween(start, 2, 4);
+        start.next.next.next.next.next = new ListNode(6);
+        start.next.next.next.next.next.next = new ListNode(7);
+        start.next.next.next.next.next.next.next = new ListNode(8);
+
+        ListNode res = reverseBetween(start, 2, 3);
+
+        while (res != null) {
+            System.out.print(res.val+" > ");
+            res = res.next;
+        }
+
     }
+
     private static ListNode reverseBetween(ListNode head, int left, int right) {
-        ListNode first = null;
-        ListNode second = null;
-        ListNode last = null;
-        ListNode temp = null;
-        ListNode ptr = head;
-        int l = 1;
-        while (ptr != null) {
-            if (l==left) {
-                first = ptr;
-                second = ptr;
-                ptr = ptr.next;
-                while (l<right) {
-                    temp = ptr.next;
-                    ptr.next = second;
-                    second = ptr;
-                    ptr = temp;
-                    l++;
-                }
-                last = ptr;
-                last.next = head;
-                first.next = ptr;
+        if (left == right)
+            return head;
+        ListNode beforeFirstNode = null;
+        ListNode firstNode = head;
+        ListNode lastNode = null;
+        ListNode afterLastNode = null;
+        ListNode p = head;
+        int count = 1;
+        while (p != null) {
+            if (count < left) {
+                beforeFirstNode = p;
+                firstNode = p.next;
+            }
+            if (count == right) {
+                lastNode = p;
+                afterLastNode = p.next;
+                lastNode.next = null;
                 break;
             }
-            ptr = ptr.next;
-            l++;
+            p = p.next;
+            count++;
+        }
+        ListNode reversed = reverseAndAppend(firstNode, afterLastNode);
+        if (left == 1) {
+            return reversed;
+        } else {
+            beforeFirstNode.next = reversed;
         }
         return head;
+    }
+
+    private static ListNode reverseAndAppend(ListNode start, ListNode afterLastNode) {
+        if (start.next == null) {
+            start.next = afterLastNode;
+            return start;
+        }
+        ListNode p1 = start;
+        ListNode p2 = start.next;
+        ListNode temp = null;
+        while (p2 != null) {
+            temp = p2.next;
+            p2.next = p1;
+            p1 = p2;
+            p2 = temp;
+        }
+        start.next = afterLastNode;
+        return p1;
     }
 }
