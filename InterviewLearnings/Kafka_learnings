@@ -1,0 +1,317 @@
+Kafka Topic
+
+1. This is also known as a stream of data.
+2. It's like a table in a database.
+3. Stores any type of message.
+4. The sequence of data in the topic is called a Data Stream.
+5. The topic data on the partition is stored in a sequential manner called an offset.
+
+Some Facts
+1. You can have as many topics as you want.
+2. If a topic is overloaded, you can scale it by increasing its partitions.
+3. You can also have as many partitions as you want.
+4. Once data is written to the partition, it cannot be changed (it's immutable).
+5. Data on a partition is kept for a limited time (generally for a week), which is configurable.
+6. You cannot guarantee the ordering of the messages if the messages are spread over multiple partitions.
+
+Partitions
+1. It's better to provide the message in the form of a key and value if you want the message to land up on a specific partition.
+   When we provide a key to the message sent to the topic, Kafka ensures that the message for a specific key will always end up on a specific partition. 
+   In this way, you can guarantee the ordering of the message.
+
+Kafka Message
+Contains the following:
+1. Key (can be null)
+2. Value (can be null)
+3. Compression Type
+4. Headers: optional, again a key-value pair.
+5. Partition + offset
+6. Timestamp (system or user-set)
+
+Kafka Serializer
+1. Kafka does not deal with plain data. It always transforms the data in the transit phase using serialization.
+2. The data is transmitted in the form of bytes.
+3. The conversion of objects/data to bytes is called serialization.
+4. The producer before sending the data to the partition performs serialization.
+5. Serialization is done on the key and value.
+
+Kafka Consumers
+1. Works on a pull model. Pulls data from the topic.
+2. If the cluster fails, it's intelligent enough to recover the data.
+3. Data is read from a higher to a lower offset.
+
+Kafka Deserializer
+1. Opposite of a serializer.
+2. The consumer needs to know about the data type in advance.
+3. As the consumer has to know in advance and should be programmed in advance, it's not easy for a producer to change the data type it's pushing to the topic. Many consumers will be affected.
+
+===========
+Day 2
+===========
+
+Consumer Group
+
+1. You can group multiple consumers in a single group.
+2. Remember that one consumer from the consumer group can read data from one topic only.
+3. Kafka maintains something called consumer offset to a topic. The consumer frequently updates this offset so that in the event of failure, it can resume reading from the committed offset.
+4. This process of frequent offset commit is also termed as 'Delivery Semantics for Consumer'. There are 3 semantics.
+   a. At least once offset (default)
+      - Offsets are committed right after the message is processed.
+      - If processing goes wrong, we will read the same message again (duplicacy).
+   b. At most once offset
+      - Offsets are committed right after the message is received.
+      - If processing goes wrong, the message is not read again (data loss).
+   c. Exactly once
+      - Here, read and write to the topic happen all the time. If you read from the topic, you write immediately too.
+
+Kafka Brokers
+1. A Kafka cluster is composed of multiple brokers.
+2. Each broker contains certain topics.
+3. You connect to just one broker (called a bootstrap broker). After that, you connect to the entire cluster.
+4. Each broker has some partitions of a topic. So you are distributing the topic over multiple brokers.
+
+Brokers and Topics
+Each broker contains metadata information for the topic details it has stored in it. Here, every broker can act as a bootstrap broker. You just connect to one broker and in turn, you will connect to all brokers.
+
+Replication Factor
+1. Kafka topics can be replicated to provide high availability and data consistency.
+2. Generally, topics have a replication factor of 3 in production environments. This means the same partition of the topic resides on multiple brokers with identical data. This is used in production-like environments to ensure no data loss.
+
+Leader Concept in the Partition
+1. If replication is enabled, the same topic partition is replicated over multiple brokers. Kafka assigns a leader broker for a specific partition. Producers can only send the data to the broker of the partition.
+2. Therefore, the main partition is known as the leader partition, and the other standby one is known as ISR (In-Sync Replica).
+
+===========
+Day 3
+===========
+
+Producer Acknowledgment
+   Kafka producer, after writing to the topic, asks for acknowledgment, which is configurable.
+   ack=0: No need for acknowledgment by the producer. Possible data loss.
+   ack=1: Seeks acknowledgment by the leader.
+   ack=all: Seeks acknowledgment by the leader and all ISRs.
+
+Kafka Topic Durability
+   For a topic with a replication factor of 3, the topic's durability can withstand 2 broker losses.
+   As a rule: for a replication factor of N, you can lose up to N-1 brokers and still recover your data.
+
+Zookeeper
+   Zookeeper was a very important and integral part of the Kafka ecosystem, with a main role in leader selection.
+   Slowly, support for this has been removed from Kafka.
+   In Kafka 3.X, you can have Kafka work even without Zookeeper. They have developed something called Kafka Raft (KRaft).
+   Kafka 4 will not have Zookeeper and will be completely integrated with KRaft.
+
+KRaft
+   Kafka Zookeeper had many issues.
+      - It had scalability issues when partitions were scaled to more than 100,000.
+      - Zookeeper was less secure compared to Kafka (separate security had to be written for this).
+      - Launch and shutdown were time consuming.
+
+Theory Roundup
+   - Kafka cluster (sets of brokers)
+   - Topics, replications, partitions, partition leader, in-sync brokers, topics offsets
+   - Producers
+      : Round-robin
+      : Key-based strategy
+      : Ack strategy
+   - Consumers
+      : Consumer offsets
+      : Consumer groups
+      : Delivery semantics
+
+===========
+Day 4
+===========
+
+Set up Kafka on Windows.
+We will not be using Zookeeper in commands anywhere, even though we can use it as it's going to be decommissioned soon.
+
+Kafka CLI for creating and listing topics.
+
+Create a topic on localhost command (with default partitions as 3):
+   => kafka-topics.bat --bootstrap-server localhost:9092 --topic first-topic --create
+
+   If you want to provide a number of partitions, use this flag:
+      --partitions 5
+   For replication factor:
+      --replication-factor 2
+   Example: 
+	.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --topic replicated-topic --create --partitions 3 --replication-factor 3
+   Note: Replication factor should always be less than the number of brokers; on localhost, there is just 1 broker, so the replication factor should also be 1.
+
+Note: On localhost, we have just one broker. If we provide a replication factor, we will get an error, as a replication factor more than 1 requires more than 1 broker.
+
+C:\kafka_2.13-3.4.0>.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --topic second_topic --create --partitions 5 --replication-factor 2
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues, it is best to use either, but not both.
+Error while executing topic command : Replication factor: 2 larger than available brokers: 1.
+[2023-08-22 10:00:42,507] ERROR org.apache.kafka.common.errors.InvalidReplicationFactorException: Replication factor: 2 larger than available brokers: 1. (kafka.admin.TopicCommand$)
+
+Listing the topics:
+   => kafka-topics.bat --bootstrap-server localhost:9092 --list
+
+===========
+Day 5
+===========
+
+Kafka console producer
+Producing a message to a topic:
+   => .\bin\windows\kafka-console-producer.bat --bootstrap-server localhost:9092 --topic first_topic
+To produce with producer property, use this flag:
+   --producer-property acks=all (seeks ack from leader and all in-sync replicas)
+To produce a message with a key:
+   => .\bin\windows\kafka-console-producer.bat --bootstrap-server localhost:9092 --topic first_topic --property parse.key=true --property key.separator=:
+To produce in round robin fashion
+   => .\bin\windows\kafka-console-producer.bat --bootstrap-server localhost:9092 --producer-property partitioner.class=org.apache.kafka.clients.producer.RoundRobinPartitioner --topic first_topic --property parse.key=true --property key.separator=:
+
+
+===========
+Day 6
+===========
+
+We will learn realtime producing and consuming.
+
+Consuming via kafka consumer:
+	=> kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic first_topic
+	Note: This command would show output in realtime. Which means only if producer is producing. If you have run the producer already and then started consuming, it will not read older produce. 
+            But, there is a way to read the topic content from the beginning. Use below flag.
+	--from-beginning in the command.
+	=> .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic first_topic --from-beginning
+Note: You can consume the messages with details also, like when it was received, on which partition it was received what is the key. You can search online to know this.
+
+===========
+Day 6
+===========
+
+Learning concept of consumer group for a topic. --group option.
+
+===========
+Day 7 
+===========
+
+Created kafka cluster in local (2 additional servers)
+
+Starting zookeeper server command: 
+	.\bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+Starting kafka server
+	.\bin\windows\kafka-server-start.bat config\server-1.properties
+
+===========
+Day 8
+===========
+
+Send data in round robin fashion to local kafka cluster on a topic with 3 partitions.
+
+1. Firstly create 3 brokers (servers) on ports 9092, 9093 and  9094.
+
+2. created a topic with below command, replication factor 3 and partitins 3. (This is one time only)
+	.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --topic replicated-topic --create --partitions 3 --replication-factor 3
+
+3. Consumers - 3 Windows with below command.
+	.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic replicated-topic --group my-first-consumption
+
+4. Round robin production: produce in round robin fashion
+	.\bin\windows\kafka-console-producer.bat --bootstrap-server localhost:9092 --producer-property partitioner.class=org.apache.kafka.clients.producer.RoundRobinPartitioner --topic replicated-topic
+
+Note: 
+	1. If you open 3 consumers separately, all 3 partitions will be assigned to all 3 consumers. 
+		If there are just 2 consumers one will print 2 messages and other just one. Which means one has got 2 partition and other has 1.
+	2. The consumer when consumes from kafka it commits to consumer offset. Which means it remembers till this offset I have read the data.
+	3. If producer produced data and no consumer read data, next time when you read from consumer you will get all the data from committed offset.
+
+Q. What is consumer and producer offset.
+Q. What is default consumer group if you have not set any consumer group.
+
+
+===========
+Day 9
+===========
+
+Learn about consumer group cli (delete and describe consumer groups)
+
+Listing existing groups:
+	.\bin\windows\kafka-consumer-groups.bat  --bootstrap-server localhost:9092 --list
+
+C:\kafka_2.13-3.4.0>.\bin\windows\kafka-consumer-groups.bat  --bootstrap-server localhost:9092 --describe --group my-first-consumption
+
+Consumer group 'my-first-consumption' has no active members.
+
+GROUP                TOPIC            PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID     HOST            CLIENT-ID
+my-first-consumption replicated-topic 0          18              18              0               -               -               -
+my-first-consumption replicated-topic 1          17              17              0               -               -               -
+my-first-consumption replicated-topic 2          18              18              0               -               -               -
+
+- You can see current and log-end offsets. If they are same means the consumer group has read all the messages and there are no more new messages reciding in the topic.
+
+We have added few more messages to the replicated-topic and now we get below output.
+
+C:\kafka_2.13-3.4.0>.\bin\windows\kafka-consumer-groups.bat  --bootstrap-server localhost:9092 --describe --group my-first-consumption
+
+Consumer group 'my-first-consumption' has no active members.
+
+GROUP                TOPIC            PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID     HOST            CLIENT-ID
+my-first-consumption replicated-topic 0          18              21              3               -               -               -
+my-first-consumption replicated-topic 1          17              21              4               -               -               -
+my-first-consumption replicated-topic 2          18              21              3               -               -               -
+
+- Lag number means this many messages are present in topic that are yet to be consumed.
+
+Now if we have some consumers listening to the topic and then we run the desc command. we can see below output
+
+C:\kafka_2.13-3.4.0>.\bin\windows\kafka-consumer-groups.bat  --bootstrap-server localhost:9092 --describe --group my-first-consumption
+
+GROUP                TOPIC            PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                           HOST            CLIENT-ID
+my-first-consumption replicated-topic 0          21              21              0               console-consumer-23c9952e-fd43-4459-ba54-345cdfdc1fca /192.168.0.102  console-consumer
+my-first-consumption replicated-topic 1          21              21              0               console-consumer-23c9952e-fd43-4459-ba54-345cdfdc1fca /192.168.0.102  console-consumer
+my-first-consumption replicated-topic 2          21              21              0               console-consumer-f2ac5cfc-b53b-4ca6-81d9-8f7880813313 /192.168.0.102  console-consumer
+
+You can see consumer-id column which shows the consumer with the id ending with 'fca' listening to 2 partitions (0 and 1) and the other consumer with if ending with 313 listening to 2nd topic.
+
+---------------------------------------------
+resetting the offsets of the consumer group
+---------------------------------------------
+
+- below command would dry run the offset reset.
+
+C:\kafka_2.13-3.4.0>.\bin\windows\kafka-consumer-groups.bat  --bootstrap-server localhost:9092 --group my-first-consumption --reset-offsets --to-earliest --topic replicated-topic --dry-run
+
+Error: Assignments can only be reset if the group 'my-first-consumption' is inactive, but the current state is Stable.
+
+GROUP                          TOPIC                          PARTITION  NEW-OFFSET
+
+- The above command would only work if consumer group is inactive. Means no active consumers listening using the group id.
+
+C:\kafka_2.13-3.4.0>.\bin\windows\kafka-consumer-groups.bat  --bootstrap-server localhost:9092 --group my-first-consumption --reset-offsets --to-earliest --topic replicated-topic --dry-run
+
+GROUP                          TOPIC                          PARTITION  NEW-OFFSET
+my-first-consumption           replicated-topic               0          0
+my-first-consumption           replicated-topic               1          0
+my-first-consumption           replicated-topic               2          0
+
+- below command would execute the offset reset.
+
+C:\kafka_2.13-3.4.0>.\bin\windows\kafka-consumer-groups.bat  --bootstrap-server localhost:9092 --group my-first-consumption --reset-offsets --to-earliest --topic replicated-topic --execute
+
+GROUP                          TOPIC                          PARTITION  NEW-OFFSET
+my-first-consumption           replicated-topic               0          0
+my-first-consumption           replicated-topic               1          0
+my-first-consumption           replicated-topic               2          0
+
+- Now if we describe the group then...
+
+C:\kafka_2.13-3.4.0>.\bin\windows\kafka-consumer-groups.bat  --bootstrap-server localhost:9092 --describe --group my-first-consumption
+
+Consumer group 'my-first-consumption' has no active members.
+
+GROUP                TOPIC            PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID     HOST            CLIENT-ID
+my-first-consumption replicated-topic 0          0               22              22              -               -               -
+my-first-consumption replicated-topic 1          0               22              22              -               -               -
+my-first-consumption replicated-topic 2          0               22              22              -               -               -
+
+C:\kafka_2.13-3.4.0>
+
+===========
+Day 10
+===========
+
+If we consume message without consumer group then its like broadcast. Each consumer will consume every message from the topic.
+If you produce to a topic which does not exists, Kafka will automatically create one (with 1 partition and 1 replication factor) with warning message.
