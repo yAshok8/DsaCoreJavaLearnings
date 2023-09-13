@@ -1,5 +1,7 @@
 package leetcode;
 
+import DSA.linkedList.ListNode;
+
 class ReverseLinkedListIILC92 {
 
     public static void main(String[] args) {

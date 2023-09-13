@@ -315,3 +315,12 @@ Day 10
 
 If we consume message without consumer group then its like broadcast. Each consumer will consume every message from the topic.
 If you produce to a topic which does not exists, Kafka will automatically create one (with 1 partition and 1 replication factor) with warning message.
+
+===========
+Day 11
+===========
+
+Created a Kafka producer java class with config. The config had localhost server with no security, key and value serializer.
+Added a ProducerRecord object and sent that record data to existing topic in kafka.
+producer.flush() => asks producer to send all data and stay blocked until its done - synchronous
+producer.close() => closes the connection. Note: It also calls flush() internally before closing.
