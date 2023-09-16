@@ -139,6 +139,12 @@ Create a topic on localhost command (with default partitions as 3):
 	.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --topic replicated-topic --create --partitions 3 --replication-factor 3
    Note: Replication factor should always be less than the number of brokers; on localhost, there is just 1 broker, so the replication factor should also be 1.
 
+Listing the topic
+    .\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --list
+
+Describing the topic
+    .\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --describe --topic demo_java
+
 Note: On localhost, we have just one broker. If we provide a replication factor, we will get an error, as a replication factor more than 1 requires more than 1 broker.
 
 C:\kafka_2.13-3.4.0>.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --topic second_topic --create --partitions 5 --replication-factor 2
@@ -324,3 +330,10 @@ Created a Kafka producer java class with config. The config had localhost server
 Added a ProducerRecord object and sent that record data to existing topic in kafka.
 producer.flush() => asks producer to send all data and stay blocked until its done - synchronous
 producer.close() => closes the connection. Note: It also calls flush() internally before closing.
+
+===========
+Day 12
+===========
+
+Resolved personal laptop kafka issue.
+Added a java program to produce to kafka topic and tested the same.
