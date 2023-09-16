@@ -344,4 +344,4 @@ Day 13
 
 When you send many messages via a script, kafka is intelligent enough to send messages to a single partition.
 This is also termed as sticky partitioner. Kafka thinks all these messages are coming from a batch so this also sends messages
-in the form of a batch. Sending all messages to a topic makes it fast.
+in the form of a batch. Sending all messages to a single topic partition makes it fast.
