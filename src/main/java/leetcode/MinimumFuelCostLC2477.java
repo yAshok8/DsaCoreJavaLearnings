@@ -3,7 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-class MinimumFuelCost {
+class MinimumFuelCostLC2477 {
 
     private long ans = 0;
 
@@ -12,7 +12,7 @@ class MinimumFuelCost {
         int [][] roads = new int[][]{{0,1}, {0,2}, {1,3}, {1, 4}};
 //        int [][] roads = new int[][]{};
         int seats = 5;
-        MinimumFuelCost obj = new MinimumFuelCost();
+        MinimumFuelCostLC2477 obj = new MinimumFuelCostLC2477();
         obj.minimumFuelCost(roads, seats);
     }
     private void minimumFuelCost(int[][] roads, int seats) {
