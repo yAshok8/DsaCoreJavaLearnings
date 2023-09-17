@@ -14,21 +14,16 @@ class ConstructSmallestNumberFromDIStringLC2375 {
     public static void main(String[] args) {
         ConstructSmallestNumberFromDIStringLC2375 obj = new ConstructSmallestNumberFromDIStringLC2375();
         System.out.println(obj.smallestNumber("ID"));
-        obj.smallestNumberRecursiveDFS("ID");
-        System.out.println();
+        System.out.println(obj.recursiveDFS("ID"));
         System.out.println(obj.smallestNumber("IIIDIDDD"));
-        obj.smallestNumberRecursiveDFS("IIIDIDDD");
-        System.out.println();
+        System.out.println(obj.recursiveDFS("IIIDIDDD"));
         System.out.println(obj.smallestNumber("IDID"));
-        obj.smallestNumberRecursiveDFS("IDID");
-        System.out.println();
+        System.out.println(obj.recursiveDFS("IDID"));
         System.out.println(obj.smallestNumber("DIDDIDI"));
-        obj.smallestNumberRecursiveDFS("DIDDIDI");
-
-//        System.out.println(obj.ans);
+        System.out.println(obj.recursiveDFS("DIDDIDI"));
     }
 
-    private String smallestNumberRecursiveDFS(String pattern) {
+    private String recursiveDFS(String pattern) {
         int [] nums = new int[pattern.length() + 1];
         dfs(nums, new HashSet<>(), 0, pattern);
         StringBuilder stringBuilder = new StringBuilder();
@@ -38,25 +33,22 @@ class ConstructSmallestNumberFromDIStringLC2375 {
         return stringBuilder.toString();
     }
 
-    private boolean dfs(int[] nums, HashSet<Object> set, int index, String pattern) {
-        if (index == pattern.length() + 1) {
+    private boolean dfs(int[] nums, HashSet<Object> set, int currIndex, String pattern) {
+        if (currIndex == pattern.length() + 1)
             return true;
-        }
         boolean res = false;
         for (int i=1; i<=pattern.length() + 1; i++) {
             if (!set.contains(i)) {
-                if (index > 0
-                        && ((pattern.charAt(index-1) == 'I' && nums[index-1] > i)
-                        || (pattern.charAt(index-1) == 'D' && nums[index-1] < i))) {
+                if (currIndex > 0
+                        && ((pattern.charAt(currIndex-1) == 'I' && nums[currIndex-1] > i)
+                        || (pattern.charAt(currIndex-1) == 'D' && nums[currIndex-1] < i))) {
                     return false;
                 }
-                nums[index] = i;
+                nums[currIndex] = i;
                 set.add(i);
-                res = dfs(nums, set, index + 1, pattern);
-                if (res) {
-                    break;
-                }
-                nums[index] = 0;
+                res = dfs(nums, set, currIndex + 1, pattern);
+                if (res) break;
+                nums[currIndex] = 0;
                 set.remove(i);
             }
         }
