@@ -9,8 +9,6 @@ interface FunctionalCharCheck {
 
 class ConstructSmallestNumberFromDIStringLC2375 {
 
-    String ans = null;
-
     public static void main(String[] args) {
         ConstructSmallestNumberFromDIStringLC2375 obj = new ConstructSmallestNumberFromDIStringLC2375();
         System.out.println(obj.smallestNumber("ID"));
