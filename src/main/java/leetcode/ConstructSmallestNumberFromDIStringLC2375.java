@@ -1,5 +1,10 @@
 package leetcode;
 
+@FunctionalInterface
+interface FunctionalCharCheck {
+    boolean checkPattern(String pattern, int index, int [] num);
+}
+
 class ConstructSmallestNumberFromDIStringLC2375 {
     public static void main(String[] args) {
         ConstructSmallestNumberFromDIStringLC2375 obj = new ConstructSmallestNumberFromDIStringLC2375();
@@ -15,17 +20,9 @@ class ConstructSmallestNumberFromDIStringLC2375 {
         }
         for (int i=1; i<=n; i++) {
             if (pattern.charAt(i-1) == 'D') {
-                int ptr = i;
-                while(ptr > 0 && pattern.charAt(ptr-1) == 'D' && num[ptr] > num[ptr-1]) {
-                    swap(ptr, ptr-1, num);
-                    ptr--;
-                }
+                swapBacktrack((p, index, arr) -> pattern.charAt(index-1) == 'D' && num[index] > num[index-1], pattern, i, num);
             } else {
-                int ptr = i;
-                while(ptr > 0 && pattern.charAt(ptr-1) == 'I' && num[ptr] < num[ptr-1]) {
-                    swap(ptr, ptr-1, num);
-                    ptr--;
-                }
+                swapBacktrack((p, index, arr) -> pattern.charAt(index-1) == 'I' && num[index] < num[index-1], pattern, i, num);
             }
         }
         StringBuilder stbr = new StringBuilder();
@@ -39,5 +36,12 @@ class ConstructSmallestNumberFromDIStringLC2375 {
         int temp = num[l];
         num[l] = num[r];
         num[r] = temp;
+    }
+
+    private void swapBacktrack(FunctionalCharCheck callbackObj, String p, int index, int [] num) {
+        while(index > 0 && callbackObj.checkPattern(p, index, num)) {
+            swap(index, index-1, num);
+            index--;
+        }
     }
 }
