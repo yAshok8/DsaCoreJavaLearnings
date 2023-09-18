@@ -343,5 +343,14 @@ Day 13
 ===========
 
 When you send many messages via a script, kafka is intelligent enough to send messages to a single partition.
-This is also termed as sticky partitioner. Kafka thinks all these messages are coming from a batch so this also sends messages
-in the form of a batch. Sending all messages to a single topic partition makes it fast.
+This is also termed as sticky partitioner.
+Kafka thinks all these messages are coming from a batch so this also sends messages in the form of a batch.
+Sending all messages to a single topic partition makes it fast.
+Programatically you can either use smaller batch size or set Partitioner class as RoundRobin.
+
+===========
+Day 14
+===========
+
+Spent 2-3 days writing shell script to reduce manual efforts.
+Today, I created consumer and ran small batch size and round robin consumption.
