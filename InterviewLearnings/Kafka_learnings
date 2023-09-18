@@ -235,7 +235,9 @@ Day 9
 Learn about consumer group cli (delete and describe consumer groups)
 
 Listing existing groups:
-	.\bin\windows\kafka-consumer-groups.bat  --bootstrap-server localhost:9092 --list
+	D:\kafka_2.12-3.5.1\bin\windows\kafka-consumer-groups.bat  --bootstrap-server localhost:9092 --list
+Deleting a consumer group:
+	D:\kafka_2.12-3.5.1\bin\windows\kafka-consumer-groups.bat --bootstrap-server localhost:9092 --delete --group topic-3P-2R
 
 C:\kafka_2.13-3.4.0>.\bin\windows\kafka-consumer-groups.bat  --bootstrap-server localhost:9092 --describe --group my-first-consumption
 
