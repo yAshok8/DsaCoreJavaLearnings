@@ -356,3 +356,17 @@ Day 14
 
 Spent 2-3 days writing shell script to reduce manual efforts.
 Today, I created consumer and ran small batch size and round robin consumption.
+
+===========
+Day 15
+===========
+
+Learnt Java ConsumerDemo.
+Added a class for it and added configuration.
+Understood how consumer can be configured to listen to a topic with specific consumer-group.
+"auto.offset.reset" This property used for setting consumer to work specific way as below.
+    //none means: if consumer group does not exists we must fail
+    //earliest means: read from the beginning from the topic
+    //latest means: read the earliest messages
+ConsumerRecords, ConsumerRecord
+Consumer.poll(): Polls the topic for specific duration and then leaves the control for better resource optimization.
