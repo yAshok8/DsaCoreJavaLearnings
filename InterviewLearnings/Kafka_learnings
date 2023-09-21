@@ -370,3 +370,11 @@ Understood how consumer can be configured to listen to a topic with specific con
     //latest means: read the earliest messages
 ConsumerRecords, ConsumerRecord
 Consumer.poll(): Polls the topic for specific duration and then leaves the control for better resource optimization.
+
+===========
+Day 16
+===========
+
+Learnt how to shutdown a consumer gracefully with Java Code.
+Consumer Rebalancing: Understood how if we can open multiple consumer with a groupid Kafka performs rebalancing and assigns dedicated 
+partition to individual partition.
