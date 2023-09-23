@@ -378,3 +378,30 @@ Day 16
 Learnt how to shutdown a consumer gracefully with Java Code.
 Consumer Rebalancing: Understood how if we can open multiple consumer with a groupid Kafka performs rebalancing and assigns dedicated 
 partition to individual partition.
+
+===========
+Day 17
+===========
+Consumer Rebalancing: Moving/Dividing partitions between consumers.
+It happens in 2 scenarios. One when new consumer onboards. Other, when admin adds new partition.
+
+There is also strategy to this. Which are as below.
+1. Eager Rebalance: As soon as a new consumer joins. All consumers leaves their partitions. And every partition (newer one too) joins back.
+Cons: 
+a. Consumers stop processing for small amount of time.
+b. No gurantee that consumer listening to the partition listens to same next time again
+
+2. Co-operative Rebalance: Here when consumer joins the group, kafka checks any consumer listening to multiple partition. 
+Picks one partition from that consumer and assigns to the newly added consumer. THis way no consumer is stopped and it also gurantees consumer
+listening to their old partitions.
+
+How to configure Consumer Rebalancing?
+in kafka consumer there is a setting called partition.assignment.strategy
+- Values 
+Eager Strategy: stop-the-world event as soon as a consumer leaves/joins the group.
+a. RangeAssignor: Assigns partition on a per-topic basis
+b. RoundRobin: Assigns partition across all topics in round robin. Means each consumer has balanced partition to read.
+c. StickyAssignor: RR in beginning. Minimises partition movement when a consumer join/leaves the group.
+
+Co-operative Rebalance Strategy: 
+a. CooperativeStickyAssignor: Similar to StickyAssignor but with co-operative protocol. Consumer keep listening from the topic.
