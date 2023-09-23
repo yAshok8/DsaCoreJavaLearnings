@@ -383,25 +383,33 @@ partition to individual partition.
 Day 17
 ===========
 Consumer Rebalancing: Moving/Dividing partitions between consumers.
-It happens in 2 scenarios. One when new consumer onboards. Other, when admin adds new partition.
+It happens in 2 scenarios. One when a new consumer onboards. Other, when an admin adds a new partition.
 
-There is also strategy to this. Which are as below.
-1. Eager Rebalance: As soon as a new consumer joins. All consumers leaves their partitions. And every partition (newer one too) joins back.
-Cons: 
-a. Consumers stop processing for small amount of time.
-b. No gurantee that consumer listening to the partition listens to same next time again
+There is also a strategy to this, which is as follows:
+1. Eager Rebalance: As soon as a new consumer joins, all consumers leave their partitions, and every partition (including newer ones) joins back.
+There is something called stop-the-world event. Which stops all listening consumers.
+Cons:
+a. Consumers stop processing for a small amount of time.
+b. No guarantee that the consumer listening to the partition will listen to it the same next time again.
 
-2. Co-operative Rebalance: Here when consumer joins the group, kafka checks any consumer listening to multiple partition. 
-Picks one partition from that consumer and assigns to the newly added consumer. THis way no consumer is stopped and it also gurantees consumer
-listening to their old partitions.
+2. Co-operative Rebalance: Here, when a consumer joins the group, Kafka checks if any consumer is listening to multiple partitions.
+It picks one partition from that consumer and assigns it to the newly added consumer. This way, no consumer is stopped, and it also guarantees that consumers
+keep listening to their old partitions.
 
 How to configure Consumer Rebalancing?
-in kafka consumer there is a setting called partition.assignment.strategy
-- Values 
+In Kafka consumer, there is a setting called 'partition.assignment.strategy'.
+- Values
 Eager Strategy: stop-the-world event as soon as a consumer leaves/joins the group.
-a. RangeAssignor: Assigns partition on a per-topic basis
-b. RoundRobin: Assigns partition across all topics in round robin. Means each consumer has balanced partition to read.
-c. StickyAssignor: RR in beginning. Minimises partition movement when a consumer join/leaves the group.
+a. RangeAssignor: Assigns partitions on a per-topic basis.
+b. RoundRobin: Assigns partitions across all topics in round-robin. Means each consumer has a balanced partition to read.
+c. StickyAssignor: Round-robin in the beginning. Minimizes partition movement when a consumer joins/leaves the group.
 
-Co-operative Rebalance Strategy: 
-a. CooperativeStickyAssignor: Similar to StickyAssignor but with co-operative protocol. Consumer keep listening from the topic.
+Co-operative Rebalance Strategy:
+a. CooperativeStickyAssignor: Similar to StickyAssignor but with a cooperative protocol. Consumers keep listening to the topic.
+
+Static Group Membership:
+If a consumer leaves a group its partition is reassigned. When the same consumer joins back it will have a new member ID.
+Therefore the partition will also be some other.
+If we want to prevent this, we can use something called `group.instance.id`. This makes the consumer as a static consumer.
+Upon leaving, if consumer joins back in decided timeout window, it will be assigned with the same partition again.
+This is very beneficial when consumer maintains local cache.
