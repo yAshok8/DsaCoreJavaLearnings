@@ -34,4 +34,27 @@ class CycleDetectionInUndirectedGraph {
         return false;
     }
 
+    public boolean detectedACycleinUndirectedGraphVer2(int V, int[][] adj) {
+        boolean [] visited = new boolean[V];
+        for (int i=0; i<V; i++) {
+            if (!visited[i] && dfsDetect(visited, new int[V], 0, adj)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean dfsDetect(boolean[] visitedBefore, int [] parent, int curr, int [][] dag) {
+        if (visitedBefore[curr]) return true;
+        visitedBefore[curr] = true;
+        for (int n: dag[curr]) {
+            //check my parent is current node
+            if (parent[curr] != n) {
+                parent[n] = curr;
+                if (dfsDetect(visitedBefore, parent, n, dag)) return true;
+            }
+        }
+        return false;
+    }
+
 }
