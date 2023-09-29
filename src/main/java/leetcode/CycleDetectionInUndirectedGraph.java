@@ -12,7 +12,7 @@ class CycleDetectionInUndirectedGraph {
         boolean [] visited = new boolean[V];
         for (int i=0; i<V; i++) {
             if (!visited[i]) {
-                if (dfsDetect(visited, 0, -1, adj)) {
+                if (dfsDetect(visited, i, -1, adj)) {
                     return true;
                 }
             }
@@ -37,7 +37,7 @@ class CycleDetectionInUndirectedGraph {
     public boolean detectedACycleinUndirectedGraphVer2(int V, int[][] adj) {
         boolean [] visited = new boolean[V];
         for (int i=0; i<V; i++) {
-            if (!visited[i] && dfsDetect(visited, new int[V], 0, adj)) {
+            if (!visited[i] && dfsDetect(visited, new int[V], i, adj)) {
                 return true;
             }
         }
