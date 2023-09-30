@@ -87,9 +87,14 @@ Day 3
 
 Producer Acknowledgment
    Kafka producer, after writing to the topic, asks for acknowledgment, which is configurable.
-   ack=0: No need for acknowledgment by the producer. Possible data loss.
-   ack=1: Seeks acknowledgment by the leader.
-   ack=all: Seeks acknowledgment by the leader and all ISRs.
+   acks=0: No need for acknowledgment by the producer. Possible data loss.
+   acks=1: Seeks acknowledgment by the leader.
+   acks=all or acks=-1 Seeks acknowledgment by the leader and all ISRs.
+   min.insync.replicas=K means kafka will seek at least K replicas acknowledgements.
+    - default value is 1. Which means topic must have at least 1 partition up as an ISR which can include the leader
+        so that we can tolerate 2 brokers being down (if 3 ISRs)
+    - If K replicas are not alive, kafka replies with NOT_ENOUGH-REPLICAS response will not write data to cluster.
+   Best prod level configuration is 'acks=all' and 'min.insync.replicas=2' with replication factor as 3
 
 Kafka Topic Durability
    For a topic with a replication factor of 3, the topic's durability can withstand 2 broker losses.
@@ -153,7 +158,7 @@ Error while executing topic command : Replication factor: 2 larger than availabl
 [2023-08-22 10:00:42,507] ERROR org.apache.kafka.common.errors.InvalidReplicationFactorException: Replication factor: 2 larger than available brokers: 1. (kafka.admin.TopicCommand$)
 
 Listing the topics:
-   => kafka-topics.bat --bootstrap-server localhost:9092 --list
+   => D:\kafka_2.12-3.5.1\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --list
 
 ===========
 Day 5
