@@ -418,3 +418,23 @@ Therefore the partition will also be some other.
 If we want to prevent this, we can use something called `group.instance.id`. This makes the consumer as a static consumer.
 Upon leaving, if consumer joins back in decided timeout window, it will be assigned with the same partition again.
 This is very beneficial when consumer maintains local cache.
+
+===========
+Day 18
+===========
+Producer Retries and Idempotent Producer
+
+Kafka producer upon unsuccessful delivery retries sending the message to the cluster.
+This retrial requires some settings which are set by default to some values initially.
+
+These settings are as below.
+
+    retries=Integer.MAX_VALUE
+    max.in.flight.requests=5
+    acks=all
+
+Now to make everything simpler Kafka 3.0 introduced idempotent producer.
+Which means if kafka received a message, commits it to topic and sent the ack to producer and somehow producer did not receive the ack.
+Then the producer will again send the same request. This request will reach the kafka again.
+But the kafka is intelligent enough to understand that the message is duplicate.
+It will not commit the message again to topic but still sends the ack.
