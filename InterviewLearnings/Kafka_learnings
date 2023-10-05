@@ -438,3 +438,25 @@ Which means if kafka received a message, commits it to topic and sent the ack to
 Then the producer will again send the same request. This request will reach the kafka again.
 But the kafka is intelligent enough to understand that the message is duplicate.
 It will not commit the message again to topic but still sends the ack.
+
+max.in.flight.requests.per.connection=1 => which means if mentioned batch (1 in this case) is somehow failed to be committed by broker and is retrying, dont send 
+additional message to Kafka. This can reduce the throughput of the producer. So use only when ordering is needed.
+
+===========
+Day 19
+===========
+
+Kafka Compression:
+Compression can take place at Kafka producer level, at broker level and at topic level.
+If its happening at broker level, It applies to all the topics.
+Below are some broker compression settings.
+	compression.type=producer : broker does not do any compression. Just stores the data as is on topic log file.
+	compression.type=none : All batches are decompressed by the broker.
+	compression.type: lz4 
+		-> If producer also uses lz4 compression, broker doesn't do any compression
+		-> If settings are different than producer, Broker first decompresses and then compresses the data as per compression type specified on broker level.
+
+Kafka Producer Throughput:
+Understanding batch size and linger.ms setting./
+Read this article for good understanding.
+	https://medium.com/lydtech-consulting/kafka-producer-message-batching-2f6f0b75a19c
