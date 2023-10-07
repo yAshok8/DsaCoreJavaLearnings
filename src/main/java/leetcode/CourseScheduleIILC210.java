@@ -35,15 +35,10 @@ public class CourseScheduleIILC210 {
     private boolean topologicalSort(List<Integer>[] dag, boolean [] visited, boolean [] currV, int curr, Stack<Integer> stack) {
         visited[curr] = true;
         currV[curr] = true;
-        if (dag[curr] != null) {
-            for (int n: dag[curr]) {
-                if (!visited[n] && topologicalSort(dag, visited, currV, n, stack)) {
+        if (dag[curr] != null)
+            for (int n: dag[curr])
+                if ((!visited[n] && topologicalSort(dag, visited, currV, n, stack)) || currV[n])
                     return true;
-                } else if (currV[n]) {
-                    return true;
-                }
-            }
-        }
         currV[curr] = false;
         stack.add(curr);
         return false;
