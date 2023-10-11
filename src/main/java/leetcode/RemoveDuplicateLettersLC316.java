@@ -19,25 +19,22 @@ class RemoveDuplicateLettersLC316 {
         Stack<Character> stack = new Stack<>();
         int index = 0;
         for (char c: s.toCharArray()) {
-            lastOccurrance[c-97] = index++;
+            lastOccurrance[c-'a'] = index++;
         }
-        stack.push(s.charAt(0));
-        seen[s.charAt(0)-97] = true;
-        index = 1;
+        index = 0;
         while (index < s.length()) {
             char c = s.charAt(index);
-            if (c < stack.peek() && !seen[c-97]) {
+            if (!seen[c-'a']) {
                 //check if stack top can be removed from the stack
-                while (!stack.isEmpty() && c < stack.peek() && lastOccurrance[stack.peek()-97] > index) {
-                    seen[stack.pop()-97] = false;
+                while (!stack.isEmpty() && c < stack.peek() && lastOccurrance[stack.peek()-'a'] > index) {
+                    seen[stack.pop()-'a'] = false;
                 }
-            }
-            if (!seen[c-97]) {
                 stack.push(c);
-                seen[c-97] = true;
+                seen[c-'a'] = true;
             }
             index++;
         }
+
         StringBuilder stbr = new StringBuilder();
         while (!stack.isEmpty()) {
             stbr.append(stack.pop());
