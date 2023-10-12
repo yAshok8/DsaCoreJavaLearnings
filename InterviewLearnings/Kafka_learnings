@@ -94,7 +94,7 @@ Producer Acknowledgment
     - default value is 1. Which means topic must have at least 1 partition up as an ISR which can include the leader
         so that we can tolerate 2 brokers being down (if 3 ISRs)
     - If K replicas are not alive, kafka replies with NOT_ENOUGH-REPLICAS response will not write data to cluster.
-   Best prod level configuration is 'acks=all' and 'min.insync.replicas=2' with replication factor as 3
+   Best prod level configuration is 'acks=all' and 'min.insync.replicas=2' with replication.factor=3
 
 Kafka Topic Durability
    For a topic with a replication factor of 3, the topic's durability can withstand 2 broker losses.
@@ -433,7 +433,7 @@ These settings are as below.
     max.in.flight.requests=5
     acks=all
 
-Now to make everything simpler Kafka 3.0 introduced idempotent producer.
+Now to make everything simpler Kafka 3.0 introduced idempotent producer to be set true by default.
 Which means if kafka received a message, commits it to topic and sent the ack to producer and somehow producer did not receive the ack.
 Then the producer will again send the same request. This request will reach the kafka again.
 But the kafka is intelligent enough to understand that the message is duplicate.
