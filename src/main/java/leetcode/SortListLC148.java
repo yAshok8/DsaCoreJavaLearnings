@@ -1,5 +1,7 @@
 package leetcode;
 
+import DSA.linkedList.ListNode;
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {

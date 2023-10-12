@@ -19,4 +19,9 @@ public class ListNode {
             this.next.printVal();
         }
     }
+
+    @Override
+    public String toString() {
+        return val + " -> " + next;
+    }
 }
