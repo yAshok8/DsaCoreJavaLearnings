@@ -27,9 +27,8 @@ class CombinationSumIILC40 {
             ans.add(new ArrayList<>(currList));
             return;
         }
-        Set<Integer> set = new HashSet<>();
         for (int i=I; i<ar.length; i++) {
-            if (!set.contains(ar[i])) {
+            if (i==I || ar[i] != ar[i-1]) {
                 if (ar[i] > target) break;
                 if (ar[i] <= target) {
                     currList.add(ar[i]);
@@ -37,7 +36,6 @@ class CombinationSumIILC40 {
                     currList.remove(currList.size() - 1);
                 }
             }
-            set.add(ar[i]);
         }
     }
 }
