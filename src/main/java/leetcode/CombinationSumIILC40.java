@@ -7,11 +7,11 @@ class CombinationSumIILC40 {
 
     public static void main(String[] args) {
         CombinationSumIILC40 obj = new CombinationSumIILC40();
-        System.out.println(obj.combinationSumII(new int[]{1,2,2,3}, 5));
-        System.out.println(obj.combinationSumII(new int[]{7,2,5,2,3,6}, 9));
-        System.out.println(obj.combinationSumII(new int[]{2,3,5}, 8));
         System.out.println(obj.combinationSumII(new int[]{2,3}, 8));
+        System.out.println(obj.combinationSumII(new int[]{2,3,5}, 8));
+        System.out.println(obj.combinationSumII(new int[]{1,2,2,3}, 5));
         System.out.println(obj.combinationSumII(new int[]{5,3,4,6,7}, 15));
+        System.out.println(obj.combinationSumII(new int[]{7,2,5,2,3,6}, 9));
         System.out.println(obj.combinationSumII(new int[]{1,1,1,2,2,2,2,2}, 10));
         System.out.println(obj.combinationSumII(new int[]{10,1,2,7,6,1,5}, 8));
     }
