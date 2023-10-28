@@ -441,6 +441,8 @@ It will not commit the message again to topic but still sends the ack.
 
 max.in.flight.requests.per.connection=1 => which means if mentioned batch (1 in this case) is somehow failed to be committed by broker and is retrying, dont send 
 additional message to Kafka. This can reduce the throughput of the producer. So use only when ordering is needed.
+But to increase throughput you can do this, Suppose max.in.flight.requests.per.connection=5 means kafka can wait upto 5 message commit.
+It can utilize the waiting time for other important work like batching. This ensures as soon as kafka receives the ack, it immediately sends the messages without delay.
 
 ===========
 Day 19
@@ -457,6 +459,11 @@ Below are some broker compression settings.
 		-> If settings are different than producer, Broker first decompresses and then compresses the data as per compression type specified on broker level.
 
 Kafka Producer Throughput:
-Understanding batch size and linger.ms setting./
+Understanding batch size and linger.ms setting.
+In short
+	batch.size: min batch size to accumulate before sending to kafka
+	linger.ms: max time to wait until batch size is filled by producer. 
+		It says within some time if batch size if full then send immediately or else send whatever amount of data batch has as soon as linger.ms time is over.
+
 Read this article for good understanding.
 	https://medium.com/lydtech-consulting/kafka-producer-message-batching-2f6f0b75a19c
