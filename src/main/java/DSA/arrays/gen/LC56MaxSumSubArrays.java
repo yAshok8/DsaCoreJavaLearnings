@@ -1,18 +1,29 @@
 package DSA.arrays.gen;
 
-class MaxSubArrays {
+class LC56MaxSumSubArrays {
 
     public static void main(String[] args) {
-//        int [] nums = {1,-1,-2};
-//        int [] nums = {5,4,-1,7,8};
+        LC56MaxSumSubArrays obj = new LC56MaxSumSubArrays();
         int [] nums = {-2,1,-3,4,-1,2,1,-5,4};
-//        int [] nums = {10,0,1,-20,2,-1,10};
-//        System.out.println(maxSubArray(nums));
-//        System.out.println(maxSubArrayKadensApproach(nums));
-        System.out.println(maxSubArrayKadensApproachShortened(nums));
+        System.out.println(obj.maxSumSubArrayOptimized(nums));
     }
 
-    public static int maxSubArrayKadensApproachShortened(int[] nums) {
+    public int maxSumSubArrayOptimized(int [] nums) {
+        int curr = nums[0];
+        int max = Integer.MIN_VALUE;
+        for (int i=1; i<nums.length; i++) {
+            if (nums[i] > nums[i] + curr) {
+                curr = nums[i];
+            } else {
+                curr += nums[i];
+            }
+            max = Math.max(max, curr);
+        }
+        return max;
+    }
+
+
+    public int maxSubArrayKadensApproachShortened(int[] nums) {
         int currMax = nums[0];
         int maxSum = nums[0];
         for (int i=1; i<nums.length;i++){
@@ -22,7 +33,7 @@ class MaxSubArrays {
         return maxSum;
     }
 
-    public static int maxSubArrayKadensApproach(int[] nums) {
+    public int maxSubArrayKadensApproach(int[] nums) {
         if(nums.length == 1)
             return nums[0];
         int currentMax = nums[0];
@@ -32,7 +43,6 @@ class MaxSubArrays {
                 currentMax = Math.max(currentMax, nums[i]);
             else
                 currentMax = Math.max(nums[i], nums[i]+currentMax);
-
             maxSum = Math.max(maxSum, currentMax);
         }
         return maxSum;
