@@ -20,7 +20,7 @@ class LC33SearchInRotatedSortedArray {
         while (l <= r) {
             int mid = (l + r) / 2;
             if (nums[mid] == target) return mid;
-            if (nums[mid] > nums[l]) {
+            if (nums[mid] >= nums[l]) {
                 //left portion is sorted
                 //check if the left portion contains the target
                 if (nums[l] <= target && target <= nums[mid]) {
