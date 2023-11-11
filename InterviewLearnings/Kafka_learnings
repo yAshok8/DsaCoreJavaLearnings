@@ -467,3 +467,29 @@ In short
 
 Read this article for good understanding.
 	https://medium.com/lydtech-consulting/kafka-producer-message-batching-2f6f0b75a19c
+
+===========
+Day 20
+===========
+
+Kafka Consumer Commit Strategy:
+
+Kafka consumers commit offsets frequently to the Kafka when it polls the batch from Kafka using .poll() function after
+auto.commit.interval.ms has elapsed.
+
+Kafka consumer automatically commits the offset which requires enable.auto.commit=true.
+
+The way you have written the consumer signifies which strategy you have followed.
+
+Example 1: Suppose you have received a batch and perform synchronous processing of the same before next poll.
+You have followed at-least-once strategy. Which means if the process fails for any record,
+you have a control to poll the same message again and re-process. If you have not implemented this the message will be lost.
+
+Example 2: If you follow above implementation and just use asynchronous processing, you are following at-most once strategy.
+Which means the offsets are committed before the batch processes.
+
+Example 2: If you
+
+There are 2 main commit strategy.
+    -> at-least once:
+    -> at-most once
