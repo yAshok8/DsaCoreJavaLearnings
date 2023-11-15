@@ -371,8 +371,8 @@ Added a class for it and added configuration.
 Understood how consumer can be configured to listen to a topic with specific consumer-group.
 "auto.offset.reset" This property used for setting consumer to work specific way as below.
     //none means: if consumer group does not exists we must fail
-    //earliest means: read from the beginning from the topic
-    //latest means: read the earliest messages
+    //earliest means: if there is no committed offset, read from the beginning from the topic/partition.
+    //latest means: if there is no committed offset, read the earliest messages, you are interested in new messages as soon as consumer starts.
 ConsumerRecords, ConsumerRecord
 Consumer.poll(): Polls the topic for specific duration and then leaves the control for better resource optimization.
 
@@ -491,3 +491,14 @@ you have a control to poll the same message again and re-process. If you have no
 
 Example 2: If you follow above implementation and just use asynchronous processing, you are following at-most once strategy.
 Which means the offsets are committed before the batch processes.
+
+===========
+Day 21
+===========
+
+Kafka default offset retention period is a week. If you want to configure it use below offset.retention.minutes.
+Suppose there are some problems with data processing you have consumed, Kafka has replay capability.
+You can replay using below way.
+ 1. Take all consumers from a specific group down.
+ 2. Use kafka-consumer-group command to set the offset where you want.
+ 3. Restart consumers.
