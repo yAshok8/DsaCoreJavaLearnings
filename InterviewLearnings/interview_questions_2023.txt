@@ -297,8 +297,9 @@ Emirates Un-Answered Questions
     -> We should use the annotations above properties in bean class.
     -> We must enable the same from the controller class like below.
         > use @Valid annotation just before @RequestBody annotation.
-        > @PostMappig
+        > @PostMapping
           public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UserDto user) {}
+          If the DTO is invalid, exception 'MethodArgumentNotValidException' is thrown.
     -> And, That's it!
     -> How we can let caller (client) know about the validation failures.
         > The above validation failures generates MethodArgumentNotValidException
@@ -341,6 +342,7 @@ Virtusa | Emirates NB interview questions
 1. Observer DP
 2. Strategy DP
 3. Traversing the Hashmap in functional way
+    hashMap.forEach((key, value) -> System.out.println(key+" "+value));
 4. How you implement an in memory cache in java
 5. Logging and tracing
 6. How you will implement Open Closed principle

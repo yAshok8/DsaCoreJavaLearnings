@@ -226,7 +226,7 @@ Send data in round robin fashion to local kafka cluster on a topic with 3 partit
 Note: 
 	1. If you open 3 consumers separately, all 3 partitions will be assigned to all 3 consumers. 
 		If there are just 2 consumers one will print 2 messages and other just one. Which means one has got 2 partition and other has 1.
-	2. The consumer when consumes from kafka it commits to consumer offset. Which means it remembers till this offset I have read the data.
+	2. The consumer when consumes from kafka it commits to consumer offset. Which means it remembers from this offset I have read the data.
 	3. If producer produced data and no consumer read data, next time when you read from consumer you will get all the data from committed offset.
 
 Q. What is consumer and producer offset.
@@ -237,7 +237,7 @@ Q. What is default consumer group if you have not set any consumer group.
 Day 9
 ===========
 
-Learn about consumer group cli (delete and describe consumer groups)
+Learn about consumer-group cli (delete and describe consumer groups)
 
 Listing existing groups:
 	D:\kafka_2.12-3.5.1\bin\windows\kafka-consumer-groups.bat  --bootstrap-server localhost:9092 --list
@@ -253,7 +253,7 @@ my-first-consumption replicated-topic 0          18              18             
 my-first-consumption replicated-topic 1          17              17              0               -               -               -
 my-first-consumption replicated-topic 2          18              18              0               -               -               -
 
-- You can see current and log-end offsets. If they are same means the consumer group has read all the messages and there are no more new messages reciding in the topic.
+- You can see current and log-end offsets. If they are same means the consumer group has read all the messages and there are no more new messages available in the topic.
 
 We have added few more messages to the replicated-topic and now we get below output.
 
@@ -387,10 +387,11 @@ partition to individual partition.
 ===========
 Day 17
 ===========
-Consumer Rebalancing: Moving/Dividing partitions between consumers.
+Consumer Re-balancing: Moving/Dividing partitions between consumers.
 It happens in 2 scenarios. One when a new consumer onboards. Other, when an admin adds a new partition.
 
 There is also a strategy to this, which is as follows:
+
 1. Eager Rebalance: As soon as a new consumer joins, all consumers leave their partitions, and every partition (including newer ones) joins back.
 There is something called stop-the-world event. Which stops all listening consumers.
 Cons:

@@ -5,8 +5,8 @@ interface Square {
     int calculate(int side);
 
 
-// This is not allowed. Concrete implementation wins over the default one.
-//    default boolean equals(Object obj) {
-//        return false;
-//    }
+   //This is not allowed. Concrete implementation wins over the default one.
+    /*default boolean equals(Object obj) {
+        return false;
+    }*/
 }
