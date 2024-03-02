@@ -4,10 +4,13 @@ import java.util.Arrays;
 
 public class LC97InterleavingStrings {
     public static void main(String[] args) {
-        String [] firstStrs = new String[] {"abababababababababababababababababababababababababababababababababababababababababababababababababbb", "MOC", "AAB", "A", "", "aa", "A", "AA", "", "aabcc"};
-        String [] secondStrs = new String[] {"babababababababababababababababababababababababababababababababababababababababababababababababaaaba","PKR", "AP", "B", "", "ab", "N", "AA", "B", "dbbca"};
+        String [] firstStrs = new String[] {"abababababababababababababababababababababababababababababababababababababababababababababababababbb",
+                "MOC", "AAB", "A", "", "aa", "A", "AA", "", "aabcc"};
+        String [] secondStrs = new String[] {"babababababababababababababababababababababababababababababababababababababababababababababababaaaba",
+                "PKR", "AP", "B", "", "ab", "N", "AA", "B", "dbbca"};
         String [] res = new String[] {"abababababababababababababababababababababababababababababababababababababababababababababababababababababa" +
-                "babababababababababababababababababababababababababababababababababababababababababababababbb", "MOPKCR", "AAPAB", "A", "", "abaa", "NA", "AAAA", "B", "aadbbcbcac"};
+                "babababababababababababababababababababababababababababababababababababababababababababababbb",
+                "MOPKCR", "AAPAB", "A", "", "abaa", "NA", "AAAA", "B", "aadbbcbcac"};
         boolean [] expected = new boolean[] {false, true, true, false, true, true, true, true, true, true};
         for (int i=firstStrs.length-1; i>=0; i--) {
             int [][] mat = new int[firstStrs[i].length()+1][secondStrs[i].length()+1];
