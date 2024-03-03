@@ -1,1 +1,14 @@
 LTI Mindtree | Riyadh Bank Questions
+
+HereMaps Round 2:
+
+Strangler Design Pattern
+Different Isolation Level in @Transactional annotation
+How to design a LRU cache
+How many microservices patterns have you used.
+How API gateway works?
+Strategy of learning a new thing?
+Which locking mechanism you have used in your projects?
+    - Expecting Reentrant lock
+How you did parallel processing in your application?
+Volatile keyword
