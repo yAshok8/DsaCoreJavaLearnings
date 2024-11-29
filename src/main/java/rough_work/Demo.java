@@ -8,6 +8,4 @@ public class Demo {
         int ans = nums.stream().filter(num -> num%2 == 0).mapToInt(Integer::intValue).sum();
         System.out.println(ans);
     }
-
-
 }

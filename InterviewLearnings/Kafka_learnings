@@ -52,9 +52,8 @@ Day 2
 Consumer Group
 
 1. You can group multiple consumers in a single group.
-2. Remember that one consumer from the consumer group can read data from one topic only.
-3. Kafka maintains something called consumer offset to a topic. The consumer frequently updates this offset so that in the event of failure, it can resume reading from the committed offset.
-4. This process of frequent offset commit is also termed as 'Delivery Semantics for Consumer'. There are 3 semantics.
+2. Kafka maintains something called consumer offset to a topic. The consumer frequently updates this offset so that in the event of failure, it can resume reading from the committed offset.
+3. This process of frequent offset commit is also termed as 'Delivery Semantics for Consumer'. There are 3 semantics.
    a. At least once offset (default)
       - Offsets are committed right after the message is processed.
       - If processing goes wrong, we will read the same message again (duplicacy).
