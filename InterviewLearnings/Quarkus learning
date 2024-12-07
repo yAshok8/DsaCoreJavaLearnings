@@ -1,0 +1,53 @@
+Beginner Questions
+
+1. What is Quarkus, and how does it differ from traditional Java frameworks like Spring?
+	a. Native Compilation
+	b. what is quarkus:dev mode?
+Ans: A modern k8s framework designed for cloud native apps, fast startup time, low memory consumption.
+made to ease developers in their development with AOT compilation feature, uses advanced modern VM called GraalVM.
+2. What are the key features of Quarkus?
+	a. Made with container based application in mind, built in support for k8s menifests.
+	b. provides faster runtime support due to AOT compilation
+	c. provides reduced memory comsumption
+	d. Developer ease
+	e. works with advance JVM support called GraalVM and provides support for Native Image Compilation
+3. Explain the concept of "Supersonic Subatomic Java" in Quarkus.
+4. What is the significance of GraalVM in Quarkus?
+	talk about
+	a. Native Image Build: what is it and why its fast. this feature is available for prod mode only
+	b. Initial metadata processing
+	c. AOT and annotation free native image binary. includes code analysis, dead code elimination, linking, generating classes for annotation based code.
+	d. Makes it suitable for serverless cloud native applications
+5. What are the build modes in Quarkus? Explain the difference between Dev mode and Production mode.
+	Dev mode: faster feedback looops, hot reloading, realtime appcode changes
+	Prod mode: Native image compilation, AOT compilation, fully optimized for prod env, No need of dev tool overhead,
+6. How does Quarkus achieve faster startup times and reduced memory usage?
+	Fast Startup: Native Image Compilation
+	Low memory:
+		Build time static metadata processing: config file, annotations, dependency injection and annotation processing happens at build time avoiding the need of processing this at runtime.
+		No JVM overhead: the process those were happening at the runtime, can now take place at build time only. Avoiding overuse of mamory at the runtime.
+		Made with reactive code approach in mind: This enables non blocking and event-driven programming.
+7. What is the purpose of the `application.properties` file in Quarkus?
+8. Explain the use of the `quarkus:dev` Maven or Gradle command.
+9. What is a Quarkus extension? How do you add an extension to your project?
+10. Can you explain dependency injection in Quarkus? How does it compare to CDI (Contexts and Dependency Injection)?
+
+------------------------------------------
+
+Detailed Explaination
+=====================
+1. Native Image:
+	A binary file which is platform dependent. Such files are faster and lighter to execute.
+	Native Image compilation is done by AOT compilation. This compilation means native application code or native image is created at the time of build phase. Such an image files contains code and environment both.
+
+	Few things is performs in advance is as below.
+
+	a. Dependency Injection:
+	Problem: in spring based application DI is done at the runtime. This is done by heavily using reflection. A reflection is a runtime feature. At runtime it performs additional operation increasing overall application runtime overhead. Along with it stores metadata of a class separately, which increases memory consumption.
+	How Quarkus deal with this: Quarkus elimimates these issues at build time only. Such optimizations is done at the buildtime only. All dependency injection based code is compiled ahead of time and separate classes and assotiations are created in build phase only.
+
+	b. Avoid reflections: as explained above.
+
+2. Quarkus workes on hybrid mode.
+	a. dev-mode: uses both jvm and JIT and runtime hot reloding feature. This improves developer experience.
+	b. production mode: here uses AOT based compilation which helps in like deadcode eliminations, precomputing dependency injections and creating necessary Java classes. As most of the work is done in compilation phase the application is faster and lighter. Making it suitable for cloud based and serverless based application.
