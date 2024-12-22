@@ -2,8 +2,37 @@ package DSA.strings;
 
 public class LongestPalindromicSubstringOptimized {
     public static void main(String[] args) {
-        String s = "apasa";
+        String s = "aa";
         System.out.println(longestPalindromeDP(s));
+        System.out.println(longestPalindromeByRippleWay(s));
+   }
+
+   private static String longestPalindromeByRippleWay(String s) {
+        int sLen = s.length();
+        int leftFinalIndice = 0;
+        int rightFinalIndice = 0;
+        for (int i=0; i<sLen; i++) {
+            int l = i, r = i;
+            while (l >= 0 && r < sLen && s.charAt(l) == s.charAt(r)) {
+                if ((r - l + 1) > (rightFinalIndice - leftFinalIndice)) {
+                    rightFinalIndice = r;
+                    leftFinalIndice = l;
+                }
+                l--;
+                r++;
+            }
+            l = i;
+            r = i+1;
+            while (l >= 0 && r < sLen && s.charAt(l) == s.charAt(r)) {
+                if ((r - l + 1) > (rightFinalIndice - leftFinalIndice)) {
+                    rightFinalIndice = r;
+                    leftFinalIndice = l;
+                }
+                l--;
+                r++;
+            }
+        }
+        return s.substring(leftFinalIndice, rightFinalIndice + 1);
    }
 
     private static String longestPalindromeDP(String s) {
