@@ -12,3 +12,32 @@ Which locking mechanism you have used in your projects?
     - Expecting Reentrant lock
 How you did parallel processing in your application?
 Volatile keyword
+
+Unknown Company
+
+Questions
+---------
+
+1. Observer DP
+2. Strategy DP
+3. Traversing the hashmap in functional way
+4. How you imlement an in memory cache in java (eviction strategy)
+5. Logging and tracing
+6. How you will implement Open Closed principle
+7. Have you ever used custom annotation in spring
+8. Difference between RestTemplate and WebClient
+9. How you handle exception in spring
+10. How you write basic consumer and producer in Kafka.
+11. Rolling back the transaction in distributed service. => Ans is 2PC
+
+
+Company 2:
+
+factory, decorator, builder
+Spring: Different
+Transaction Annotation in Spring.
+API gateway, Circuit Breaker.
+Garbage collection algorithms.
+Java 8 functional interface.
+Thread safe collections.
+AVL and Red Black Tree
