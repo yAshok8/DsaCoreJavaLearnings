@@ -1,0 +1,14 @@
+Synechron R1 (11/1/2025)
+--------------------------
+DLQueue
+Solid principle,
+Kafka
+	How you configure kafka
+	What is zookeeper
+	How consumer reads the missed data
+Java 8 functional interface
+Comparator, Comparable
+	Example
+API Gateway and Circuit breaker
+Intermediatery and terminal interface
+Can you serialize static fields
