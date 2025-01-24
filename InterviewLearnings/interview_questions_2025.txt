@@ -12,3 +12,24 @@ Comparator, Comparable
 API Gateway and Circuit breaker
 Intermediatery and terminal interface
 Can you serialize static fields
+
+----------------------------
+Linkk Group | SNB Bank
+----------------------------
+
+How you break product in microservices and define boundaries between them
+Onion layer
+Benefits of ORM
+	- Suppose you have migrated from MySQL to Postgres. if You have not used ORM what changes will be needed in your application code.
+		- said no need to change the application code as ORM easily facilitates DB migrations
+	- Author to Article
+	- Article to Categories (Many to Many)
+		- How you define this many to many relationships in your spring code?
+		- How does this look like in Java Code?
+		- will there be 3rd table and entity in your code?
+Have you ever worked on Event based project architecture
+	- How you decide if you want to go ahead with event based calls or synchronous calls
+Locking in database
+	- Said optimistic/passimistic calls.
+How you implement the same using Spring
+	- Said transactions
