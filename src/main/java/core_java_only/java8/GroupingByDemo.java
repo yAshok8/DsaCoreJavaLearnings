@@ -148,6 +148,25 @@ public class GroupingByDemo {
         System.out.println(res);
     }
 
+    /*
+    * You have a student list. You want a map of city and students belonging to the city.
+    * Also, the students list per city must be sorted in descending order.
+    * */
+    private static void groupingAndSortingDemo(List<Student> studentList) {
+        Map<String, List<Student>> groupedByCity = studentList.stream()
+                .collect(Collectors.groupingBy(
+                        Student::getCity, // Group by city
+                        Collectors.collectingAndThen( // After grouping, sort by name in descending order
+                                Collectors.toList(),
+                                list -> {
+                                    list.sort(Comparator.comparing(Student::getName).reversed()); // Sorting by name in descending order
+                                    return list;
+                                }
+                        )
+                ));
+        System.out.println(groupedByCity);
+    }
+
 
 
 }

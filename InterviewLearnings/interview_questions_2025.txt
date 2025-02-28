@@ -33,3 +33,46 @@ Locking in database
 	- Said optimistic/passimistic calls.
 How you implement the same using Spring
 	- Said transactions
+
+------------------------------------------
+Talent Arabia | ADCB Bank (24th Feb, 2025)
+------------------------------------------
+
+1. Online Test
+--------------
+
+    - Online test gorilla was given in which they asked Quants Questions, Core Java, Spring
+    (AOP, various annotations), Kafka MCQs, Rest MCQs, Microservices MCQs
+    - Quants Questions Example
+        a. If n persons finish a task in 10 days then how manu days will be taken by m
+        b. A week schedule was given for some person. Person A will work when person B and C works.
+        When person B will have holiday?
+
+2. Round One Interview Questions
+--------------------------------
+
+    1. Hashmap vs Concurrent hash map
+        If we just synchronize hash map method will it become chm?
+        Why we use binary tree in hashmap for storing data
+    2. Retry topic vs DL topic in Kafka
+    3. Which cloud deployment product you are using
+    4. New features of Java 17
+        What are records in java 17
+        If there is a list in a record, is it immutable?
+    5. Isolation levels in transaction (Uncommited, Committed, REPEATABLE READ and Synchronized)
+        - What are the problems for which isolation is applied
+        - If you pick an entity from a service with Transactional annotation and send that entity to
+        another service and use save method there will it save the same to db or throw an error?
+    6. Various entity states in Hibernate?
+    7. If there are 2 instances of ms which update the same row to the db how can you achieve the same:
+        said optimistic lock. He asked will it lock just a row or an entire table?
+    8. In distributes architecture, what happens if any of the service fails?
+        How you design such possibility?
+        I Said SAGA:
+            - Which one you implemented? (Orchestration or choreograpgy)?
+    9. Problem: Given String "a1b2c3d4"
+    Print: "abbcccdddd" in less than n square complexity
+        - Explained 2 approaches.
+            a. Simple for loop character wise
+            b. Using stack
+        - Both will have linear time complexity. As the numbers in the string will take constant TC.

@@ -77,7 +77,8 @@ Replication Factor
 2. Generally, topics have a replication factor of 3 in production environments. This means the same partition of the topic resides on multiple brokers with identical data. This is used in production-like environments to ensure no data loss.
 
 Leader Concept in the Partition
-1. If replication is enabled, the same topic partition is replicated over multiple brokers. Kafka assigns a leader broker for a specific partition. Producers can only send the data to the broker of the partition.
+1. If replication is enabled, the same topic partition is replicated over multiple brokers.
+    Kafka assigns a leader broker for a specific partition. Producers can only send the data to the broker of the partition.
 2. Therefore, the main partition is known as the leader partition, and the other standby one is known as ISR (In-Sync Replica).
 
 ===========

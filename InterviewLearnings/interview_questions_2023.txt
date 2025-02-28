@@ -395,15 +395,21 @@ SmartStreams Technology
 ADCB Bank Interview Questions
 -----------------------------
 
-1. Kubernates, containerization using docker.
+1. Kubernetes, containerization using docker.
 2. How load balancer works
 3. If You have db which is continuously being updated (added new rows).
 	You have new threads being spawned every minute. You need to ensure if a thread
 	is initializing, it has to read the new records. like first thread read 500,
 	the next one to read next 500. How can you achieve this?
-4. Optimistic vs Passimistic reads in JPA
+4. Optimistic vs Pessimistic reads in JPA
 5. You have to read from DB when your application starts up (all the time).
 	How can you do that?
+	Answer: @PostConstruct, CommandLineRunner, Eureka Naming Server (/actuator/refresh, Webhooks, Spring Cloud Bus)
 6. If you are calling a server which is giving error. How you are handling in your client (caller)
 	application?
+	a. Retry: @Retryable(maxAttempt = 3000, backoff = @Backoff(delay = 3000))
+	b. CircuitBreaker:
+	    - Explain CB in Quarkus which uses MicroProfile extension.
+	    - @CircuitBreaker(requestVolumeThreshold=4, failureRatio=0.75, delay=1000)
+	    - @Fallback(fallBackMethod = "fallBackMethod")
 7. ServiceDiscovery using Eureka Naming Server.
