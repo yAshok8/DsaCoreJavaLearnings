@@ -29,8 +29,10 @@ Benefits of ORM
 		- will there be 3rd table and entity in your code?
 Have you ever worked on Event based project architecture
 	- How you decide if you want to go ahead with event based calls or synchronous calls
+	- Asked example of amazon
+	- If you want to notify the user for his purchase. Which method will you choose. Sync or Async?
 Locking in database
-	- Said optimistic/passimistic calls.
+	- Said optimistic/pessimistic calls.
 How you implement the same using Spring
 	- Said transactions
 
@@ -76,3 +78,4 @@ Talent Arabia | ADCB Bank (24th Feb, 2025)
             a. Simple for loop character wise
             b. Using stack
         - Both will have linear time complexity. As the numbers in the string will take constant TC.
+    10. Re-balancing complexity of BST? : O(log n)
