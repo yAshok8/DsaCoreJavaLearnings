@@ -107,3 +107,37 @@ RemoteOne | Unknown (Saudi Arabia) | Screening Round | 5th March
         - said I dont have prior experience
         - interviewer asked what's the way you choose to learn something new?
     6. Asked salary expectations
+
+----------------------------
+Array | Bahrain | 7th March
+----------------------------
+
+Tell me about yourself
+Tell me about your work part. Explain how transfers and payment works.
+Why you have so many switches?
+
+Kafka
+
+	What are main components of kafka?
+	How kafka provides fault tolerence
+	What is the process of leader selection?
+	How to debug a consumer. To know if the consumer is slow?
+
+Core java
+
+	1. Hashmap vs hashtable
+	2. ArrayList vs LinkedList
+	3. Main interfaces implementing List interface
+		OR major implementations of List
+	4. Benefits of collections in Java?
+	5. Various generations of a heap memory?
+	6. Java 17 major features
+	7. Immutable objects?
+
+Coding Questions
+
+1. Print prime numbers between 1 to 100
+2. Rotate a matrix 90 degree
+3. Given an array of strings strs, group the anagrams together
+	Input: strs = ["eat","tea","tan","ate","nat","bat"]
+	Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
