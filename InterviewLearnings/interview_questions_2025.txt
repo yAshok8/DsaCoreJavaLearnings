@@ -14,7 +14,7 @@ Intermediatery and terminal interface
 Can you serialize static fields
 
 ----------------------------
-Linkk Group | SNB Bank
+Linkk Group | ANB Bank
 ----------------------------
 
 How you break product in microservices and define boundaries between them
@@ -46,9 +46,9 @@ Talent Arabia | ADCB Bank (24th Feb, 2025)
     - Online test gorilla was given in which they asked Quants Questions, Core Java, Spring
     (AOP, various annotations), Kafka MCQs, Rest MCQs, Microservices MCQs
     - Quants Questions Example
-        a. If n persons finish a task in 10 days then how manu days will be taken by m
+        a. If n persons finish a task in 10 days then how many days will be taken by m
         b. A week schedule was given for some person. Person A will work when person B and C works.
-        When person B will have holiday?
+        When person B will have holiday? Kind of questions.
 
 2. Round One Interview Questions
 --------------------------------
@@ -79,3 +79,31 @@ Talent Arabia | ADCB Bank (24th Feb, 2025)
             b. Using stack
         - Both will have linear time complexity. As the numbers in the string will take constant TC.
     10. Re-balancing complexity of BST? : O(log n)
+
+3. Round Two Interview Questions
+---------------------------------
+
+    1. Tell me about a project where you have developed microservices based app.
+    2. What was the design patterns used component used
+    3. How they used to do inter-service communication
+    4. How you design microservices based product from the scratch
+        - Was expecting DDD. Later on asked whats DDD?
+    4. Kafka
+        a. How consumer deals with application failures picks the right message?
+        b. ack =0,1,all meaning?
+    5. Difference between SAGA Orchestration and Choreography
+    6. What's P in CAP theorem?
+    7. Convert a statement in words without using library functions.
+
+------------------------------------------------------------------
+RemoteOne | Unknown (Saudi Arabia) | Screening Round | 5th March
+------------------------------------------------------------------
+
+    1. Tell me about yourself. Projects, experience, technical expertise.
+    2. Tell me about your technical expertise and when was the last time you used?
+    3. Which module in Framework, Java have you used so far?
+    4. Have you faced any challenge and how you solved that?
+    5. This role needs AI Knowledge.
+        - said I dont have prior experience
+        - interviewer asked what's the way you choose to learn something new?
+    6. Asked salary expectations
