@@ -1,0 +1,88 @@
+Asked in McKinsey HackerRank Test (October 27)
+----------------------------------------------
+
+    1. Binary Operation — Minimum Operations to Reach Zero
+
+    Given a positive integer n, find the minimum number of operations needed to reduce it to zero.
+
+    In one operation, choose any integer i >= 0 and either add or subtract 2^i. You may choose a different power of two each time.
+
+    Allowed amounts include 1, 2, 4, 8, 16, and so on. Division is not an allowed operation.
+
+    Java function
+
+    public static int minOperations(int n)
+
+    Example
+
+    Input: n = 27
+    Output: 3
+
+    One optimal sequence:
+    27 + 1 = 28
+    28 + 4 = 32
+    32 - 32 = 0
+
+    2. Delete Nodes with Odd Values
+
+    Given the head of a singly linked list of integers, remove every node whose stored value is odd. Preserve the relative order of the remaining nodes and return the new head.
+
+    Delete based on values, not node positions. Return null if no nodes remain.
+
+    Java function
+
+    public static Node deleteOddValues(Node head)
+
+    Assume Node contains an integer data field and a Node next field.
+
+    Examples
+
+    Input:  1 -> 3 -> 4 -> 7 -> 8
+    Output: 4 -> 8
+
+    Input:  2 -> 4 -> 6
+    Output: 2 -> 4 -> 6
+
+    Input:  1 -> 3 -> 5
+    Output: null
+
+    3. Zig Zag Move — Victoria's Maximum Score
+
+    You are given a collection of points on a two-dimensional plane. Each input string contains two space-separated integers: an x-coordinate and a y-coordinate.
+
+    Victoria chooses a lower level y and a positive integer height h. Her path alternates between:
+
+    Moving vertically upward from (x, y) to (x, y + h).
+
+    Moving diagonally right and downward to a supplied point on the same lower level y.
+
+    Moving vertically upward again by the same h.
+
+    The lower level y and upper level y + h remain fixed throughout the path. All turning points must be supplied points. The x-coordinate strictly increases between successive vertical moves; the horizontal gaps can differ.
+
+    She earns one point for every completed upward vertical move. A valid path ends on the upper level y + h.
+
+    Return the maximum score over all choices of levels and valid paths. The input can contain unrelated points, and Victoria does not need to use them all. Neither y nor h is given separately.
+
+    Java function
+
+    public static int maxPoints(List<String> points)
+
+    Illustrative scattered input
+
+    List.of(
+        "5 7", "2 4", "8 2", "1 7",
+        "5 2", "3 9", "8 7", "1 2",
+        "2 9", "6 5"
+    )
+
+    Output: 3
+
+    Choose lower level 2 and upper level 7, so h = 5.
+
+    Path:
+    (1, 2) -> (1, 7) -> (5, 2) -> (5, 7) -> (8, 2) -> (8, 7)
+
+    There are three upward moves. The remaining supplied points are unused.
+
+    Although (2, 4) -> (2, 9) also has height 5, it cannot join this path: its lower and upper levels differ.
