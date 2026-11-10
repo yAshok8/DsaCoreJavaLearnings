@@ -2,7 +2,23 @@ package DSA.binary_search;
 
 import java.util.*;
 
-class Result {
+public class ClimbingLeaderboardHackerrank {
+
+    public static List<Integer> climbingLeaderboard2Pointer(List<Integer> ranked, List<Integer> player) {
+        List<Integer> res = new ArrayList<>();
+        List<Integer> distinct = new ArrayList<>();
+        for (int rank: ranked) {
+            if (distinct.isEmpty() || distinct.get(distinct.size()-1) != rank) {
+                distinct.add(rank);
+            }
+        }
+        int index = distinct.size() - 1;
+        for (int score: player) {
+            while (index >= 0 && score >= distinct.get(index)) index--;
+            res.add(index + 2);
+        }
+        return res;
+    }
 
     public static List<Integer> climbingLeaderboard(List<Integer> ranked, List<Integer> player) {
         // Write your code here
@@ -53,32 +69,19 @@ class Result {
         }
         return ans;
     }
-}
-
-public class ClimbingLeaderboardHackerrank {
 
     public static void main(String[] args) {
+        //Hardcoded input
+        //List<Integer> ranked = Arrays.asList(100, 100, 50, 40, 40, 20, 10);
+        //List<Integer> player = Arrays.asList(5, 25, 50, 120);
+        //List<Integer> result = climbingLeaderboard(ranked, player);
 
         // Hardcoded input
-//        List<Integer> ranked =
-//                Arrays.asList(100, 100, 50, 40, 40, 20, 10);
-//
-//        List<Integer> player =
-//                Arrays.asList(5, 25, 50, 120);
-//
-//        List<Integer> result =
-//                Result.climbingLeaderboard(ranked, player);
-
-        // Hardcoded input
-        List<Integer> ranked =
-                Arrays.asList(100, 90, 90, 80, 75, 60);
-
-        List<Integer> player =
-                Arrays.asList(50, 65, 77, 90, 102);
-
-        List<Integer> result =
-                Result.climbingLeaderboard(ranked, player);
-
-        System.out.println(result);
+        List<Integer> ranked = Arrays.asList(100, 90, 90, 80, 75, 60);
+        List<Integer> player = Arrays.asList(50, 65, 77, 90, 102);
+        List<Integer> result1 = climbingLeaderboard(ranked, player);
+        List<Integer> result2 = climbingLeaderboard2Pointer(ranked, player);
+        System.out.println(result1);
+        System.out.println(result2);
     }
 }

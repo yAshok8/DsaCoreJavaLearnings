@@ -7,13 +7,13 @@ public class Atoi_MediaNet {
     }
 
     private static int findNumber(String s) {
-        if (s == null || s.length() == 0) return -1;
+        if (s == null || s.isEmpty()) return -1;
         int lastPtr = s.length() - 1;
         int res = 0;
         int multiplier = 1;
-        int lastCalculated = 0;
+        int lastCalculated;
         for (int i=lastPtr; i>=0; i--) {
-            int asciiRep = (int) s.charAt(i);
+            int asciiRep = s.charAt(i);
             if (asciiRep < 48 || asciiRep > 57)
                 return -1;
             lastCalculated = (asciiRep - 48) * multiplier;
