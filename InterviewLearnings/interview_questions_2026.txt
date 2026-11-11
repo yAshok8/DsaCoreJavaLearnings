@@ -86,3 +86,51 @@ Asked in McKinsey HackerRank Test (October 27)
     There are three upward moves. The remaining supplied points are unused.
 
     Although (2, 4) -> (2, 9) also has height 5, it cannot join this path: its lower and upper levels differ.
+
+
+—————————————————————————
+systems limited interview | 11 Nov 2026
+——————————-—————————————-
+
+Round 1
+
+1. Core Java
+
+* transient Keyword – What is it, and when should it be used?
+* HashMap vs ConcurrentHashMap – What are the differences in terms of thread safety and performance?
+* Interface vs Abstract Class – What are the differences, and when should each be used?
+* HashMap with Synchronization – How does a HashMap behave inside a synchronized block? Does synchronization make it thread-safe?
+
+2. Java Coding / Problem Solving
+
+5. Sorting Customers by Age – Given a list of Customer objects, sort the customers based on their age using Java.
+
+3. Spring Boot / JPA
+
+* @Transient Annotation – What is its purpose, and when should it be used?
+* Spring Stereotype Annotations – What are the differences between @Component, @Service, and @Repository?
+* Annotation Selection – When should we use @Component versus @Service versus @Repository?
+
+4. Apache Kafka
+
+* Duplicate Message Handling – How do you safeguard Kafka consumers against duplicate messages?
+* Idempotent Consumers – How do you design and implement an idempotent Kafka consumer?
+
+5. Microservices & Distributed Systems
+
+* Saga Pattern – What is the Saga pattern, how does it work, and when should it be used?
+* Microservices Architecture – What are the advantages and disadvantages of microservices?
+* Circuit Breaker Pattern – What is a circuit breaker, how does it work, and when should it be used?
+* REST vs Kafka – When should microservices communicate through synchronous REST APIs versus asynchronous Kafka events?
+
+6. Database / SQL
+
+* Composite Keys – What is a composite primary key, and when should it be used?
+* Composite Key Design – Why can including an existing primary key as part of a composite key be problematic? What are the trade-offs?
+* Customer-Order SQL Query – Given a Customer table and an Orders table with a one-to-many relationship, write an SQL query to retrieve all customers along with their orders, including customers who have not placed any orders. (Expected concept: LEFT JOIN.)
+* JOIN vs Subquery – What is the difference between a JOIN and a subquery? When should each be used?
+* Partitioning vs Sharding – What is the difference between database partitioning and sharding? When should each be used?
+
+Total: 19 questions across 6 technical areas.
+
+These are the interview questions collected so far, organized for future revision and preparation.
